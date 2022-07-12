@@ -20,14 +20,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var nfcReadingStartButton: Button
     private lateinit var faceAutoCaptureStartButton: Button
     private lateinit var smileLivenessStartButton: Button
+    private lateinit var faceMatcherStartButton: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViews(view)
-        setupDocumentAutoCaptureButton()
+        setupDocumentAutoCaptureStartButton()
         setupNfcReadingStartButton()
-        setupFaceAutoCaptureButton()
-        setupSmileLivenessButton()
+        setupFaceAutoCaptureStartButton()
+        setupSmileLivenessStartButton()
+        setupFaceMatcherStartButton()
     }
 
     private fun setViews(view: View) {
@@ -35,9 +37,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         nfcReadingStartButton = view.findViewById(R.id.nfc_reading_start)
         faceAutoCaptureStartButton = view.findViewById(R.id.face_auto_capture_start)
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
+        faceMatcherStartButton = view.findViewById(R.id.face_matcher_start)
     }
 
-    private fun setupDocumentAutoCaptureButton() {
+    private fun setupDocumentAutoCaptureStartButton() {
         documentAutoCaptureStartButton.setOnClickListener {
             val bundle = bundleOf(DocumentAutoCaptureFragment.CONFIGURATION to DocumentAutoCaptureConfiguration.Builder().build())
             findNavController().navigate(R.id.action_HomeFragment_to_BasicDocumentAutoCaptureFragment, bundle)
@@ -55,7 +58,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setupFaceAutoCaptureButton() {
+    private fun setupFaceAutoCaptureStartButton() {
         faceAutoCaptureStartButton.setOnClickListener {
             val bundle = bundleOf(
                 FaceAutoCaptureFragment.CONFIGURATION to FaceAutoCaptureConfiguration.Builder()
@@ -66,10 +69,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setupSmileLivenessButton() {
+    private fun setupSmileLivenessStartButton() {
         smileLivenessStartButton.setOnClickListener {
             val bundle = bundleOf(SmileLivenessFragment.CONFIGURATION to SmileLivenessConfiguration.Builder().build())
             findNavController().navigate(R.id.action_HomeFragment_to_BasicSmileLivenessFragment, bundle)
+        }
+    }
+
+    private fun setupFaceMatcherStartButton() {
+        faceMatcherStartButton.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_FaceMatcherFragment)
         }
     }
 }

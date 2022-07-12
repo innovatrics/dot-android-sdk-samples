@@ -203,6 +203,54 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/face_matcher_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/face_matcher_title"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/sample_face_matcher_title"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    app:layout_constraintEnd_toStartOf="@+id/face_matcher_start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/face_matcher_description"
+                    style="@style/TextAppearance.Material3.BodyMedium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/sample_face_matcher_description"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    app:layout_constraintEnd_toStartOf="@+id/face_matcher_start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/face_matcher_title" />
+
+                <Button
+                    android:id="@+id/face_matcher_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sample_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/face_matcher_description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.innovatrics.dot.face.DotFace
+import com.innovatrics.dot.face.DotFaceLibrary
 import kotlinx.coroutines.launch
 
 class DotFaceViewModel(
@@ -25,7 +25,7 @@ class DotFaceViewModel(
     }
 
     private suspend fun initializeDotFaceIfNeededInternal() {
-        when (DotFace.getInstance().isInitialized) {
+        when (DotFaceLibrary.getInstance().isInitialized) {
             true -> mutableState.value = state.value!!.copy(isInitialized = true)
             false -> initializeDotFace()
         }
@@ -36,16 +36,16 @@ class DotFaceViewModel(
         initializeDotFaceUseCase(getApplication(), initializationListener)
     }
 
-    private fun createDotFaceInitializationListener(): DotFace.InitializationListener {
-        return DotFace.InitializationListener { result ->
+    private fun createDotFaceInitializationListener(): DotFaceLibrary.InitializationListener {
+        return DotFaceLibrary.InitializationListener { result ->
             val newState = resolveStateFromResult(result)
             mutableState.postValue(newState)
         }
     }
 
-    private fun resolveStateFromResult(result: DotFace.Result): DotFaceState {
+    private fun resolveStateFromResult(result: DotFaceLibrary.Result): DotFaceState {
         return when (result.code) {
-            DotFace.Result.Code.OK -> state.value!!.copy(isInitialized = true)
+            DotFaceLibrary.Result.Code.OK -> state.value!!.copy(isInitialized = true)
             else -> state.value!!.copy(isInitialized = false, errorMessage = result.exception.message)
         }
     }

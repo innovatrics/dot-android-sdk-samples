@@ -12,7 +12,7 @@ android {
         minSdk 21
         targetSdk 32
         versionCode 1
-        versionName '4.0.0'
+        versionName '4.1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -45,6 +45,7 @@ dependencies {
     implementation "com.innovatrics.dot:dot-face-detection-fast:$dotFaceVersion"
     implementation "com.innovatrics.dot:dot-face-expression-neutral:$dotFaceVersion"
     implementation "com.innovatrics.dot:dot-face-passive-liveness:$dotFaceVersion"
+    implementation "com.innovatrics.dot:dot-face-verification:$dotFaceVersion"
     implementation "com.innovatrics.dot:dot-nfc:$dotNfcVersion"
 }
 

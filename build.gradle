@@ -5,10 +5,10 @@ plugins {
 }
 
 ext {
-    dotDocumentVersion = '3.4.1'
-    dotFaceVersion = '4.8.2'
+    dotDocumentVersion = '3.5.0'
+    dotFaceVersion = '4.9.0'
     dotNfcVersion = '2.2.2'
-    navigationVersion = '2.4.2'
+    navigationVersion = '2.5.0'
 }
 
 task clean(type: Delete) {
