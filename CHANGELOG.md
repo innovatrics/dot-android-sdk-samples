@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.2.0 - 2022-07-21
+### Changed
+- Update DOT NFC to 2.3.0.
+
 ## 4.1.0 - 2022-07-12
 ### Added
 - New sample: Face Matcher.

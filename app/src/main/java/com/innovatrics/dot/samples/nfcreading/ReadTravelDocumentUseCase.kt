@@ -18,7 +18,7 @@ class ReadTravelDocumentUseCase(
 
     suspend operator fun invoke(intent: Intent, nfcKey: NfcKey): NfcReadingResult = withContext(ioDispatcher) {
         val travelDocument = readTravelDocument(intent, nfcKey)
-        val faceBitmap = travelDocument.encodedIdentificationFeaturesFace?.faceImage?.createBitmap()
+        val faceBitmap = travelDocument.encodedIdentificationFeaturesFace.faceImage?.createBitmap()
         NfcReadingResult(travelDocument, faceBitmap)
     }
 

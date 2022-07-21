@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder
 fun createGson(): Gson {
     return GsonBuilder()
         .setExclusionStrategies(ResultExclusionStrategy())
+        .registerTypeAdapter(ByteArray::class.java, ByteArraySerializer())
         .setPrettyPrinting()
         .disableHtmlEscaping()
         .create()

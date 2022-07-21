@@ -11,7 +11,6 @@ class ResultExclusionStrategy : ExclusionStrategy {
     )
     private val excludeClasses = listOf(
         Bitmap::class.java,
-        ByteArray::class.java,
     )
 
     override fun shouldSkipField(fieldAttributes: FieldAttributes): Boolean {
