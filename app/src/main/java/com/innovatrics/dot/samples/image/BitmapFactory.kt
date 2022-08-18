@@ -2,8 +2,8 @@ package com.innovatrics.dot.samples.image
 
 import android.graphics.Bitmap
 import com.gemalto.jp2.JP2Decoder
-import com.innovatrics.android.commons.image.Image
-import com.innovatrics.android.commons.image.ImageFormat
+import com.innovatrics.dot.image.Image
+import com.innovatrics.dot.image.ImageFormat
 
 fun Image.createBitmap(): Bitmap {
     return when (this.format) {
