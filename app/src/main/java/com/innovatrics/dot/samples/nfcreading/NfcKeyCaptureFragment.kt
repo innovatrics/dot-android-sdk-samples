@@ -24,7 +24,7 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
 
     private fun setupNfcReadingViewModel() {
         val nfcReadingViewModelFactory = NfcReadingViewModelFactory(requireActivity().application.resources)
-        nfcReadingViewModel = ViewModelProvider(requireActivity(), nfcReadingViewModelFactory).get(NfcReadingViewModel::class.java)
+        nfcReadingViewModel = ViewModelProvider(requireActivity(), nfcReadingViewModelFactory)[NfcReadingViewModel::class.java]
         nfcReadingViewModel.initializeState()
         nfcReadingViewModel.state.observe(viewLifecycleOwner) { state ->
             state.nfcKey?.let {

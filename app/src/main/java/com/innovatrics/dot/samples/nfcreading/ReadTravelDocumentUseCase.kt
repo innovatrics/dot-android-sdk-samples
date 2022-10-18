@@ -4,7 +4,6 @@ import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import com.innovatrics.dot.nfc.NfcKey
-import com.innovatrics.dot.nfc.NfcTravelDocumentReader
 import com.innovatrics.dot.nfc.TravelDocument
 import com.innovatrics.dot.samples.image.createBitmap
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,9 +11,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ReadTravelDocumentUseCase(
-    private val nfcTravelDocumentReader: NfcTravelDocumentReader,
+    private val nfcTravelDocumentReaderFactory: NfcTravelDocumentReaderFactory,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
+
+    private val nfcTravelDocumentReader by lazy { nfcTravelDocumentReaderFactory.create() }
 
     suspend operator fun invoke(intent: Intent, nfcKey: NfcKey): NfcReadingResult = withContext(ioDispatcher) {
         val travelDocument = readTravelDocument(intent, nfcKey)

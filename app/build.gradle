@@ -5,20 +5,21 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    namespace 'com.innovatrics.dot.samples'
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.innovatrics.dot.samples'
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
-        versionName '4.4.0'
+        versionName '4.5.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

@@ -28,7 +28,7 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
 
     private fun setupDotFaceViewModel() {
         val dotFaceViewModelFactory = DotFaceViewModelFactory(requireActivity().application)
-        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory).get(DotFaceViewModel::class.java)
+        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory)[DotFaceViewModel::class.java]
         dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
             if (state.isInitialized) {
                 start()

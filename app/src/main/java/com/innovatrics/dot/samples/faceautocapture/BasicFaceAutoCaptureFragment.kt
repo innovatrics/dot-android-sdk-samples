@@ -28,7 +28,7 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     private fun setupDotFaceViewModel() {
         val dotFaceViewModelFactory = DotFaceViewModelFactory(requireActivity().application)
-        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory).get(DotFaceViewModel::class.java)
+        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory)[DotFaceViewModel::class.java]
         dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
             if (state.isInitialized) {
                 start()
@@ -43,7 +43,7 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     private fun setupFaceAutoCaptureViewModel() {
         val faceAutoCaptureViewModelFactory = FaceAutoCaptureViewModelFactory()
-        faceAutoCaptureViewModel = ViewModelProvider(requireActivity(), faceAutoCaptureViewModelFactory).get(FaceAutoCaptureViewModel::class.java)
+        faceAutoCaptureViewModel = ViewModelProvider(requireActivity(), faceAutoCaptureViewModelFactory)[FaceAutoCaptureViewModel::class.java]
         faceAutoCaptureViewModel.initializeState()
         faceAutoCaptureViewModel.state.observe(viewLifecycleOwner) { state ->
             mainViewModel.setProcessing(state.isProcessing)

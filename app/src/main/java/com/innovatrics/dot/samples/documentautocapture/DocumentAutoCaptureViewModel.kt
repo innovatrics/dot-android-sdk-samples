@@ -23,7 +23,7 @@ class DocumentAutoCaptureViewModel : ViewModel() {
     private fun createUiResult(documentAutoCaptureResult: DocumentAutoCaptureResult): com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult {
         return DocumentAutoCaptureResult(
             bitmap = BitmapFactory.create(documentAutoCaptureResult.bgraRawImage),
-            documentDetectorResult = documentAutoCaptureResult.documentDetectorResult
+            documentAutoCaptureResult = documentAutoCaptureResult
         )
     }
 }

@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.5.0 - 2022-10-18
+### Changed
+- Update DOT Document to 3.6.2.
+- Update DOT Face to 4.10.3.
+- Update DOT NFC to 2.3.4.
+- Enable code shrinking, obfuscation, and optimization for `release` build type.
+
+### Fixed
+- NFC Reading: Read authority certificates asynchronously.
+
 ## 4.4.0 - 2022-08-18
 ### Changed
 - Update DOT Document to 3.6.1.

@@ -10,8 +10,8 @@ class NfcReadingViewModelFactory(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val nfcTravelDocumentReader = createNfcTravelDocumentReader(resources)
-        val readTravelDocumentUseCase = ReadTravelDocumentUseCase(nfcTravelDocumentReader)
+        val nfcTravelDocumentReaderFactory: NfcTravelDocumentReaderFactory = DefaultNfcTravelDocumentReaderFactory(resources)
+        val readTravelDocumentUseCase = ReadTravelDocumentUseCase(nfcTravelDocumentReaderFactory)
         return NfcReadingViewModel(readTravelDocumentUseCase) as T
     }
 }
