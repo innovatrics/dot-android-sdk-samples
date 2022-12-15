@@ -41,7 +41,7 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     override fun onCaptured(result: DocumentAutoCaptureResult) {
-        nfcReadingViewModel.resolveAndSetNfcKey(result.machineReadableZone)
+        nfcReadingViewModel.resolveAndSetNfcKey(result.machineReadableZone!!)
     }
 
     override fun onDetected(detection: DocumentAutoCaptureDetection) {

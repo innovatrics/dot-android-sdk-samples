@@ -5,8 +5,8 @@ plugins {
 }
 
 ext {
-    dotDocumentVersion = '3.7.0'
-    dotFaceVersion = '4.10.4'
+    dotDocumentVersion = '3.7.1'
+    dotFaceVersion = '4.11.0'
     dotNfcVersion = '2.3.4'
     navigationVersion = '2.5.3'
 }
