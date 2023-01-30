@@ -41,6 +41,9 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
         documentAutoCaptureViewModel.process(result)
     }
 
-    override fun onDetected(detection: DocumentAutoCaptureDetection) {
+    override fun onProcessed(detection: DocumentAutoCaptureDetection) {
+    }
+
+    override fun onStopped() {
     }
 }

@@ -1,4 +1,11 @@
 # Changelog
+
+## 4.8.0 - 2023-01-30
+### Changed
+- Update DOT SDK to 5.0.0.
+- Update DOT license.
+
+## 4.7.0 - 2022-12-15
 ### Changed
 - Update DOT Document to 3.7.1.
 - Update DOT Face to 4.11.0.

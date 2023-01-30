@@ -13,7 +13,7 @@ class ProcessDetectedFaceUseCase(
     suspend operator fun invoke(detectedFace: DetectedFace): FaceAutoCaptureResult = withContext(ioDispatcher) {
         FaceAutoCaptureResult(
             bitmap = BitmapFactory.create(detectedFace.image),
-            confidence = detectedFace.confidence,
+            confidence = detectedFace.getConfidence(),
             faceAspects = detectedFace.evaluateFaceAspects(),
             faceQuality = detectedFace.evaluateFaceQuality(),
             passiveLivenessFaceAttribute = detectedFace.evaluatePassiveLiveness(),

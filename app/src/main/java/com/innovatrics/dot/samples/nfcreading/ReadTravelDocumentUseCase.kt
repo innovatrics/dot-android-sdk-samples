@@ -5,6 +5,7 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import com.innovatrics.dot.nfc.NfcKey
 import com.innovatrics.dot.nfc.TravelDocument
+import com.innovatrics.dot.samples.android.content.getParcelableExtraCompat
 import com.innovatrics.dot.samples.image.createBitmap
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +25,7 @@ class ReadTravelDocumentUseCase(
     }
 
     private fun readTravelDocument(intent: Intent, nfcKey: NfcKey): TravelDocument {
-        val tag = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)!!
+        val tag = intent.getParcelableExtraCompat<Tag>(NfcAdapter.EXTRA_TAG)!!
         return nfcTravelDocumentReader.read(tag, nfcKey)
     }
 }

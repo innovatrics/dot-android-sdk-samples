@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jlleitschuh.gradle.ktlint' version '11.0.0'
+    id 'org.jlleitschuh.gradle.ktlint' version '11.1.0'
 }
 
 android {
@@ -13,7 +13,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName '4.7.0'
+        versionName '4.8.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -33,7 +33,9 @@ android {
         jvmTarget = '11'
     }
 
-    ndkVersion '24.0.8215888'
+    lint {
+        disable 'IconLocation'
+    }
 }
 
 dependencies {
@@ -41,13 +43,13 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation 'com.gemalto.jp2:jp2-android:1.0.3'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation "com.innovatrics.dot:dot-document:$dotDocumentVersion"
-    implementation "com.innovatrics.dot:dot-face-detection-fast:$dotFaceVersion"
-    implementation "com.innovatrics.dot:dot-face-expression-neutral:$dotFaceVersion"
-    implementation "com.innovatrics.dot:dot-face-passive-liveness:$dotFaceVersion"
-    implementation "com.innovatrics.dot:dot-face-verification:$dotFaceVersion"
-    implementation "com.innovatrics.dot:dot-nfc:$dotNfcVersion"
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation "com.innovatrics.dot:dot-document:$dotVersion"
+    implementation "com.innovatrics.dot:dot-face-detection-fast:$dotVersion"
+    implementation "com.innovatrics.dot:dot-face-expression-neutral:$dotVersion"
+    implementation "com.innovatrics.dot:dot-face-passive-liveness:$dotVersion"
+    implementation "com.innovatrics.dot:dot-face-verification:$dotVersion"
+    implementation "com.innovatrics.dot:dot-nfc:$dotVersion"
 }
 
 ktlint {
