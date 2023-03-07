@@ -3,7 +3,7 @@ package com.innovatrics.dot.samples.smileliveness
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.innovatrics.dot.face.image.BitmapFactory
+import com.innovatrics.dot.image.BitmapFactory
 
 class SmileLivenessViewModel : ViewModel() {
 

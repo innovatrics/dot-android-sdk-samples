@@ -1,7 +1,7 @@
 package com.innovatrics.dot.samples.faceautocapture
 
 import com.innovatrics.dot.face.detection.DetectedFace
-import com.innovatrics.dot.face.image.BitmapFactory
+import com.innovatrics.dot.image.BitmapFactory
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
