@@ -10,13 +10,14 @@ import com.innovatrics.dot.samples.R
 class SmileLivenessResultFragment : Fragment(R.layout.fragment_smile_liveness_result) {
 
     private val smileLivenessViewModel: SmileLivenessViewModel by activityViewModels()
+
     private lateinit var neutralExpressionImageView: ImageView
     private lateinit var smileExpressionImageView: ImageView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViews(view)
-        setupFaceAutoCaptureViewModel()
+        setupSmileLivenessViewModel()
     }
 
     private fun setViews(view: View) {
@@ -24,7 +25,7 @@ class SmileLivenessResultFragment : Fragment(R.layout.fragment_smile_liveness_re
         smileExpressionImageView = view.findViewById(R.id.smile_expression_image)
     }
 
-    private fun setupFaceAutoCaptureViewModel() {
+    private fun setupSmileLivenessViewModel() {
         smileLivenessViewModel.state.observe(viewLifecycleOwner) { showResult(it.result!!) }
     }
 

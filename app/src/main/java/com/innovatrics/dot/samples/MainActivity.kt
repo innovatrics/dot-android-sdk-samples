@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private val mainViewModel: MainViewModel by viewModels()
+
     private lateinit var overlayView: View
     private lateinit var progressIndicator: CircularProgressIndicator
 

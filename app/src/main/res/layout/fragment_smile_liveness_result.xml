@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".faceautocapture.FaceAutoCaptureResultFragment">
+    tools:context=".smileliveness.SmileLivenessResultFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/smile_expression_image"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
 
         <ImageView
             android:id="@+id/smile_expression_image"
@@ -28,7 +29,8 @@
             app:layout_constraintLeft_toRightOf="@+id/neutral_expression_image"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:layout_width="0dp"

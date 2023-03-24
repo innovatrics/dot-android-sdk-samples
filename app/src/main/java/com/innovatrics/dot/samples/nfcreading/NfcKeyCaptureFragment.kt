@@ -3,7 +3,6 @@ package com.innovatrics.dot.samples.nfcreading
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureDetection
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
@@ -14,7 +13,7 @@ import com.innovatrics.dot.samples.R
 class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-    private lateinit var nfcReadingViewModel: NfcReadingViewModel
+    private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels { NfcReadingViewModelFactory(resources) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,8 +22,6 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     private fun setupNfcReadingViewModel() {
-        val nfcReadingViewModelFactory = NfcReadingViewModelFactory(requireActivity().application.resources)
-        nfcReadingViewModel = ViewModelProvider(requireActivity(), nfcReadingViewModelFactory)[NfcReadingViewModel::class.java]
         nfcReadingViewModel.initializeState()
         nfcReadingViewModel.state.observe(viewLifecycleOwner) { state ->
             state.nfcKey?.let {

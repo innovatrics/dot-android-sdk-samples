@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.similarity.FaceMatcher
 import com.innovatrics.dot.samples.MainViewModel
@@ -18,10 +17,10 @@ import com.innovatrics.dot.samples.ui.createGson
 class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
 
     private val mainViewModel: MainViewModel by activityViewModels()
+    private val dotFaceViewModel: DotFaceViewModel by activityViewModels { DotFaceViewModelFactory(requireActivity().application) }
+    private val faceMatcherViewModel: FaceMatcherViewModel by activityViewModels { FaceMatcherViewModelFactory(resources) }
     private val gson = createGson()
 
-    private lateinit var dotFaceViewModel: DotFaceViewModel
-    private lateinit var faceMatcherViewModel: FaceMatcherViewModel
     private lateinit var sheldonImageView: ImageView
     private lateinit var leonardImageView: ImageView
     private lateinit var textView: TextView
@@ -40,8 +39,6 @@ class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
     }
 
     private fun setupDotFaceViewModel() {
-        val dotFaceViewModelFactory = DotFaceViewModelFactory(requireActivity().application)
-        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory)[DotFaceViewModel::class.java]
         dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
             if (state.isInitialized) {
                 faceMatcherViewModel.matchFacesAsync()
@@ -55,8 +52,6 @@ class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
     }
 
     private fun setupFaceMatcherViewModel() {
-        val faceMatcherViewModelFactory = FaceMatcherViewModelFactory(resources)
-        faceMatcherViewModel = ViewModelProvider(this, faceMatcherViewModelFactory)[FaceMatcherViewModel::class.java]
         faceMatcherViewModel.state.observe(viewLifecycleOwner) { state ->
             mainViewModel.setProcessing(state.isProcessing)
             state.sheldonBitmap?.let(sheldonImageView::setImageBitmap)

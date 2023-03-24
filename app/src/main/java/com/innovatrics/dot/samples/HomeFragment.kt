@@ -11,6 +11,8 @@ import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.quality.PassiveLivenessQualityProvider
+import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration
+import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessFragment
 import com.innovatrics.dot.face.liveness.smile.SmileLivenessConfiguration
 import com.innovatrics.dot.face.liveness.smile.SmileLivenessFragment
 
@@ -20,6 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var nfcReadingStartButton: Button
     private lateinit var faceAutoCaptureStartButton: Button
     private lateinit var smileLivenessStartButton: Button
+    private lateinit var magnifEyeLivenessStartButton: Button
     private lateinit var faceMatcherStartButton: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupNfcReadingStartButton()
         setupFaceAutoCaptureStartButton()
         setupSmileLivenessStartButton()
+        setupMagnifEyeLivenessStartButton()
         setupFaceMatcherStartButton()
     }
 
@@ -37,6 +41,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         nfcReadingStartButton = view.findViewById(R.id.nfc_reading_start)
         faceAutoCaptureStartButton = view.findViewById(R.id.face_auto_capture_start)
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
+        magnifEyeLivenessStartButton = view.findViewById(R.id.magnifeye_liveness_start)
         faceMatcherStartButton = view.findViewById(R.id.face_matcher_start)
     }
 
@@ -73,6 +78,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         smileLivenessStartButton.setOnClickListener {
             val bundle = bundleOf(SmileLivenessFragment.CONFIGURATION to SmileLivenessConfiguration.Builder().build())
             findNavController().navigate(R.id.action_HomeFragment_to_BasicSmileLivenessFragment, bundle)
+        }
+    }
+
+    private fun setupMagnifEyeLivenessStartButton() {
+        magnifEyeLivenessStartButton.setOnClickListener {
+            val bundle = bundleOf(MagnifEyeLivenessFragment.CONFIGURATION to MagnifEyeLivenessConfiguration.Builder().build())
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment, bundle)
         }
     }
 

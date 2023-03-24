@@ -13,8 +13,9 @@ dependencyResolutionManagement {
         maven {
             url 'https://maven.innovatrics.com/releases'
         }
-        //noinspection JcenterRepositoryObsolete
-        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
     }
 }
 rootProject.name = "dot-android-sdk-samples"

@@ -27,6 +27,10 @@
             app:destination="@id/BasicSmileLivenessFragment" />
 
         <action
+            android:id="@+id/action_HomeFragment_to_BasicMagnifEyeLivenessFragment"
+            app:destination="@id/BasicMagnifEyeLivenessFragment" />
+
+        <action
             android:id="@+id/action_HomeFragment_to_FaceMatcherFragment"
             app:destination="@id/FaceMatcherFragment" />
 
@@ -136,6 +140,29 @@
         android:name="com.innovatrics.dot.samples.smileliveness.SmileLivenessResultFragment"
         android:label="@string/navigation_destination_smile_liveness"
         tools:layout="@layout/fragment_smile_liveness_result" />
+
+    <fragment
+        android:id="@+id/BasicMagnifEyeLivenessFragment"
+        android:name="com.innovatrics.dot.samples.magnifeyeliveness.BasicMagnifEyeLivenessFragment"
+        android:label="@string/navigation_destination_magnifeye_liveness"
+        tools:layout="@layout/dot_face_fragment_magnifeye_liveness">
+
+        <argument
+            android:name="configuration"
+            app:argType="com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration" />
+
+        <action
+            android:id="@+id/action_BasicMagnifEyeLivenessFragment_to_MagnifEyeLivenessResultFragment"
+            app:destination="@id/MagnifEyeLivenessResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MagnifEyeLivenessResultFragment"
+        android:name="com.innovatrics.dot.samples.magnifeyeliveness.MagnifEyeLivenessResultFragment"
+        android:label="@string/navigation_destination_magnifeye_liveness"
+        tools:layout="@layout/fragment_magnifeye_liveness_result" />
 
     <fragment
         android:id="@+id/FaceMatcherFragment"

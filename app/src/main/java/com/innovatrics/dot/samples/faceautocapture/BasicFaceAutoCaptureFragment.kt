@@ -3,7 +3,6 @@ package com.innovatrics.dot.samples.faceautocapture
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
@@ -17,8 +16,8 @@ import com.innovatrics.dot.samples.face.DotFaceViewModelFactory
 class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-    private lateinit var dotFaceViewModel: DotFaceViewModel
-    private lateinit var faceAutoCaptureViewModel: FaceAutoCaptureViewModel
+    private val dotFaceViewModel: DotFaceViewModel by activityViewModels { DotFaceViewModelFactory(requireActivity().application) }
+    private val faceAutoCaptureViewModel: FaceAutoCaptureViewModel by activityViewModels { FaceAutoCaptureViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,8 +26,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
     }
 
     private fun setupDotFaceViewModel() {
-        val dotFaceViewModelFactory = DotFaceViewModelFactory(requireActivity().application)
-        dotFaceViewModel = ViewModelProvider(this, dotFaceViewModelFactory)[DotFaceViewModel::class.java]
         dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
             if (state.isInitialized) {
                 start()
@@ -42,8 +39,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
     }
 
     private fun setupFaceAutoCaptureViewModel() {
-        val faceAutoCaptureViewModelFactory = FaceAutoCaptureViewModelFactory()
-        faceAutoCaptureViewModel = ViewModelProvider(requireActivity(), faceAutoCaptureViewModelFactory)[FaceAutoCaptureViewModel::class.java]
         faceAutoCaptureViewModel.initializeState()
         faceAutoCaptureViewModel.state.observe(viewLifecycleOwner) { state ->
             mainViewModel.setProcessing(state.isProcessing)
