@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.12.0 - 2023-04-04
+### Changed
+- Update DOT SDK to 5.4.2.
+
 ## 4.11.0 - 2023-03-24
 ### Added
 - New sample: MagnifEye Liveness.
