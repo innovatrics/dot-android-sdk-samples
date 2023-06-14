@@ -13,7 +13,7 @@ import com.innovatrics.dot.samples.R
 class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-    private val documentAutoCaptureViewModel: DocumentAutoCaptureViewModel by activityViewModels()
+    private val documentAutoCaptureViewModel: DocumentAutoCaptureViewModel by activityViewModels { DocumentAutoCaptureViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

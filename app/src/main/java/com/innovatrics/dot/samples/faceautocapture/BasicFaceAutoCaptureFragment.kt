@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
-import com.innovatrics.dot.face.autocapture.steps.CaptureStepId
-import com.innovatrics.dot.face.detection.DetectedFace
+import com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
 import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
 import com.innovatrics.dot.samples.face.DotFaceViewModel
@@ -56,13 +56,16 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
         mainViewModel.notifyNoCameraPermission()
     }
 
-    override fun onStepChanged(captureStepId: CaptureStepId, detectedFace: DetectedFace) {
-    }
-
-    override fun onCaptured(detectedFace: DetectedFace) {
-        faceAutoCaptureViewModel.process(detectedFace)
-    }
-
     override fun onStopped() {
+    }
+
+    override fun onCandidateSelectionStarted() {
+    }
+
+    override fun onCaptured(result: FaceAutoCaptureResult) {
+        faceAutoCaptureViewModel.process(result)
+    }
+
+    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 }

@@ -17,7 +17,7 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private val dotFaceViewModel: DotFaceViewModel by activityViewModels { DotFaceViewModelFactory(requireActivity().application) }
-    private val smileLivenessViewModel: SmileLivenessViewModel by activityViewModels()
+    private val smileLivenessViewModel: SmileLivenessViewModel by activityViewModels { SmileLivenessViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

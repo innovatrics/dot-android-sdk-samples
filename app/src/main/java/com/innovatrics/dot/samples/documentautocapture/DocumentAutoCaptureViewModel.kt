@@ -3,10 +3,12 @@ package com.innovatrics.dot.samples.documentautocapture
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
-import com.innovatrics.dot.image.BitmapFactory
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class DocumentAutoCaptureViewModel : ViewModel() {
+class DocumentAutoCaptureViewModel(
+    private val createUiResultUseCase: CreateUiResultUseCase,
+) : ViewModel() {
 
     private val mutableState: MutableLiveData<DocumentAutoCaptureState> = MutableLiveData()
     val state: LiveData<DocumentAutoCaptureState> = mutableState
@@ -15,15 +17,10 @@ class DocumentAutoCaptureViewModel : ViewModel() {
         mutableState.value = DocumentAutoCaptureState()
     }
 
-    fun process(documentAutoCaptureResult: DocumentAutoCaptureResult) {
-        val uiResult = createUiResult(documentAutoCaptureResult)
-        mutableState.value = state.value!!.copy(result = uiResult)
-    }
-
-    private fun createUiResult(documentAutoCaptureResult: DocumentAutoCaptureResult): com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult {
-        return DocumentAutoCaptureResult(
-            bitmap = BitmapFactory.create(documentAutoCaptureResult.bgraRawImage),
-            documentAutoCaptureResult = documentAutoCaptureResult
-        )
+    fun process(documentAutoCaptureResult: com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult) {
+        viewModelScope.launch {
+            val result = createUiResultUseCase(documentAutoCaptureResult)
+            mutableState.value = state.value!!.copy(result = result)
+        }
     }
 }

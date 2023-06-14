@@ -1,12 +1,12 @@
-package com.innovatrics.dot.samples.faceautocapture
+package com.innovatrics.dot.samples.smileliveness
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class FaceAutoCaptureViewModelFactory : ViewModelProvider.Factory {
+class SmileLivenessViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return FaceAutoCaptureViewModel(CreateUiResultUseCase()) as T
+        return SmileLivenessViewModel(CreateUiResultUseCase()) as T
     }
 }

@@ -5,8 +5,8 @@ plugins {
 }
 
 ext {
-    dotVersion = '5.4.2'
-    navigationVersion = '2.5.3'
+    dotVersion = '6.0.0'
+    navigationVersion = '2.6.0'
 }
 
 task clean(type: Delete) {

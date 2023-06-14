@@ -16,15 +16,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class InitializeDotFaceUseCase(
-    private val dotFaceLibrary: DotFaceLibrary = DotFaceLibrary.getInstance(),
+    private val dotFaceLibrary: DotFaceLibrary = DotFaceLibrary,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 
-    suspend operator fun invoke(context: Context, listener: DotFaceLibrary.InitializationListener) = withContext(ioDispatcher) {
+    suspend operator fun invoke(context: Context, onFinished: (DotFaceLibrary.Result) -> Unit) = withContext(ioDispatcher) {
         val license = readLicense(context.resources)
         val modules = createModules()
         val configuration = DotFaceLibraryConfiguration.Builder(context, license, modules).build()
-        dotFaceLibrary.initializeAsync(configuration, listener)
+        dotFaceLibrary.initializeAsync(configuration, onFinished)
     }
 
     private fun readLicense(resources: Resources): ByteArray {

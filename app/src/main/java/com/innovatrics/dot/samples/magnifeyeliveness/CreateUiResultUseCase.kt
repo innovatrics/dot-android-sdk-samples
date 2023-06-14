@@ -10,7 +10,8 @@ class CreateUiResultUseCase(
 ) {
 
     suspend operator fun invoke(magnifEyeLivenessResult: com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(dispatcher) {
-        val bitmap = BitmapFactory.create(magnifEyeLivenessResult.bgrRawImage)
-        MagnifEyeLivenessResult(bitmap)
+        MagnifEyeLivenessResult(
+            bitmap = BitmapFactory.create(magnifEyeLivenessResult.bgrRawImage),
+        )
     }
 }
