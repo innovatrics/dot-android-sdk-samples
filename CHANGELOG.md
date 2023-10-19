@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.14.0 - 2023-10-19
+### Changed
+- Update DOT SDK to 6.5.1.
+- Minor improvements.
+
 ## 4.13.0 - 2023-06-14
 ### Changed
 - Update DOT SDK to 6.0.0.

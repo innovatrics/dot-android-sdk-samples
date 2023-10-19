@@ -9,10 +9,10 @@ class CreateUiResultUseCase(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 
-    suspend operator fun invoke(faceAutoCaptureResult: com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult): DocumentAutoCaptureResult = withContext(ioDispatcher) {
+    suspend operator fun invoke(documentAutoCaptureResult: com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult): DocumentAutoCaptureResult = withContext(ioDispatcher) {
         DocumentAutoCaptureResult(
-            bitmap = BitmapFactory.create(faceAutoCaptureResult.bgraRawImage),
-            documentAutoCaptureResult = faceAutoCaptureResult,
+            bitmap = BitmapFactory.create(documentAutoCaptureResult.bgraRawImage),
+            documentAutoCaptureResult = documentAutoCaptureResult,
         )
     }
 }

@@ -1,6 +1,5 @@
 package com.innovatrics.dot.samples
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -52,10 +51,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun restoreScreen() {
         overlayView.alpha = OVERLAY_ALPHA_NORMAL_SCREEN
         progressIndicator.hide()
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        mainViewModel.setIntent(intent)
     }
 }

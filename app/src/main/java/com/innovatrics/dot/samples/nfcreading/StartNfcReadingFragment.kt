@@ -1,7 +1,9 @@
 package com.innovatrics.dot.samples.nfcreading
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.util.Consumer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,22 +15,16 @@ class StartNfcReadingFragment : Fragment(R.layout.fragment_start_nfc_reading) {
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels()
-    private val nfcDispatchController = NfcDispatchController()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        nfcDispatchController.setup(requireContext())
-        setupMainViewModel()
         setupNfcReadingViewModel()
-    }
-
-    private fun setupMainViewModel() {
-        mainViewModel.state.observe(requireActivity()) {
-            it.intent?.let { intent ->
-                nfcReadingViewModel.read(intent)
-                mainViewModel.notifyIntentConsumed()
-            }
-        }
+        lifecycle.addObserver(
+            StartNfcReadingFragmentObserver(
+                activity = requireActivity(),
+                onNewIntentListener = Consumer<Intent>(nfcReadingViewModel::read),
+            ),
+        )
     }
 
     private fun setupNfcReadingViewModel() {
@@ -42,15 +38,5 @@ class StartNfcReadingFragment : Fragment(R.layout.fragment_start_nfc_reading) {
                 nfcReadingViewModel.notifyErrorMessageShown()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        nfcDispatchController.enableForegroundDispatch(requireActivity())
-    }
-
-    override fun onPause() {
-        super.onPause()
-        nfcDispatchController.disableForegroundDispatch(requireActivity())
     }
 }

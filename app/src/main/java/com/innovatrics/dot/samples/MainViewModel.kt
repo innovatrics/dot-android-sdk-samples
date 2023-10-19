@@ -1,6 +1,5 @@
 package com.innovatrics.dot.samples
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,14 +11,6 @@ class MainViewModel : ViewModel() {
 
     fun setProcessing(enabled: Boolean) {
         mutableState.value = state.value!!.copy(isProcessing = enabled)
-    }
-
-    fun setIntent(intent: Intent?) {
-        mutableState.value = state.value!!.copy(intent = intent)
-    }
-
-    fun notifyIntentConsumed() {
-        mutableState.value = state.value!!.copy(intent = null)
     }
 
     fun notifyNoCameraPermission() {

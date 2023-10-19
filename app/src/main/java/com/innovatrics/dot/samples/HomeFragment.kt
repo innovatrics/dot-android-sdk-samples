@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
+import com.innovatrics.dot.document.autocapture.MrzValidation
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.QualityAttributeThresholdPresets
@@ -56,8 +57,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         nfcReadingStartButton.setOnClickListener {
             val bundle = bundleOf(
                 DocumentAutoCaptureFragment.CONFIGURATION to DocumentAutoCaptureConfiguration.Builder()
-                    .mrzReadingEnabled(true)
-                    .build()
+                    .mrzValidation(MrzValidation.VALIDATE_ALWAYS)
+                    .build(),
             )
             findNavController().navigate(R.id.action_HomeFragment_to_NfcKeyCaptureFragment, bundle)
         }
@@ -68,7 +69,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val bundle = bundleOf(
                 FaceAutoCaptureFragment.CONFIGURATION to FaceAutoCaptureConfiguration.Builder()
                     .qualityAttributeThresholds(QualityAttributeThresholdPresets.passiveLiveness.build())
-                    .build()
+                    .build(),
             )
             findNavController().navigate(R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment, bundle)
         }
