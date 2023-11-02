@@ -5,7 +5,7 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 ## Setup
 
 1. To obtain a license file, please contact `support@innovatrics.com`.
-1. Copy the license file to `app/src/main/res/raw/dot_face_license.lic`.
+1. Copy the license file to `app/src/main/res/raw/dot_license.lic`.
 
 ## Samples
 
@@ -18,7 +18,7 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 | **MagnifEye Liveness**    | Basic component sample.                                                                                               |
 | **Face Matcher**          | Perform face matching using image resources.                                                                          |
 
-In case when the Face-related samples do not work because of the expired DOT Face license, please contact `support@innovatrics.com` in order to obtain a new license file.
+In case when the samples do not work because of the expired DOT license, please contact `support@innovatrics.com` in order to obtain a new license file.
 
 ## Changelog
 

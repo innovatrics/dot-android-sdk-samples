@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.15.0 - 2023-11-02
+### Changed
+- Update DOT SDK to 7.0.0.
+- Rework DOT SDK initialization and run initialization before each sample.
+
 ## 4.14.0 - 2023-10-19
 ### Changed
 - Update DOT SDK to 6.5.1.

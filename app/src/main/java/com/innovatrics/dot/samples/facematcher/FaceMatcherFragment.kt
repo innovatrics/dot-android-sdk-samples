@@ -6,18 +6,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.similarity.FaceMatcher
+import com.innovatrics.dot.samples.DotSdkViewModel
+import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
-import com.innovatrics.dot.samples.face.DotFaceViewModel
-import com.innovatrics.dot.samples.face.DotFaceViewModelFactory
 import com.innovatrics.dot.samples.ui.createGson
+import kotlinx.coroutines.launch
 
 class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-    private val dotFaceViewModel: DotFaceViewModel by activityViewModels { DotFaceViewModelFactory(requireActivity().application) }
+    private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val faceMatcherViewModel: FaceMatcherViewModel by activityViewModels { FaceMatcherViewModelFactory(resources) }
     private val gson = createGson()
 
@@ -28,7 +32,7 @@ class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViews(view)
-        setupDotFaceViewModel()
+        setupDotSdkViewModel()
         setupFaceMatcherViewModel()
     }
 
@@ -38,17 +42,21 @@ class FaceMatcherFragment : Fragment(R.layout.fragment_face_matcher) {
         textView = view.findViewById(R.id.text)
     }
 
-    private fun setupDotFaceViewModel() {
-        dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
-            if (state.isInitialized) {
-                faceMatcherViewModel.matchFacesAsync()
-            }
-            state.errorMessage?.let {
-                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                dotFaceViewModel.notifyErrorMessageShown()
+    private fun setupDotSdkViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collect { state ->
+                    if (state.isInitialized) {
+                        faceMatcherViewModel.matchFacesAsync()
+                    }
+                    state.errorMessage?.let {
+                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
+                        dotSdkViewModel.notifyErrorMessageShown()
+                    }
+                }
             }
         }
-        dotFaceViewModel.initializeDotFaceIfNeeded()
+        dotSdkViewModel.initializeDotSdkIfNeeded()
     }
 
     private fun setupFaceMatcherViewModel() {

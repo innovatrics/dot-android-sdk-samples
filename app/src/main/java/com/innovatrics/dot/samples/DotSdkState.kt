@@ -1,6 +1,6 @@
-package com.innovatrics.dot.samples.face
+package com.innovatrics.dot.samples
 
-data class DotFaceState(
+data class DotSdkState(
     val isInitialized: Boolean = false,
     val errorMessage: String? = null,
 )

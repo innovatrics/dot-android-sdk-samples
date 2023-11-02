@@ -3,39 +3,47 @@ package com.innovatrics.dot.samples.faceautocapture
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
+import com.innovatrics.dot.samples.DotSdkViewModel
+import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
-import com.innovatrics.dot.samples.face.DotFaceViewModel
-import com.innovatrics.dot.samples.face.DotFaceViewModelFactory
+import kotlinx.coroutines.launch
 
 class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-    private val dotFaceViewModel: DotFaceViewModel by activityViewModels { DotFaceViewModelFactory(requireActivity().application) }
+    private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val faceAutoCaptureViewModel: FaceAutoCaptureViewModel by activityViewModels { FaceAutoCaptureViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupDotFaceViewModel()
+        setupDotSdkViewModel()
         setupFaceAutoCaptureViewModel()
     }
 
-    private fun setupDotFaceViewModel() {
-        dotFaceViewModel.state.observe(viewLifecycleOwner) { state ->
-            if (state.isInitialized) {
-                start()
-            }
-            state.errorMessage?.let {
-                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                dotFaceViewModel.notifyErrorMessageShown()
+    private fun setupDotSdkViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collect { state ->
+                    if (state.isInitialized) {
+                        start()
+                    }
+                    state.errorMessage?.let {
+                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
+                        dotSdkViewModel.notifyErrorMessageShown()
+                    }
+                }
             }
         }
-        dotFaceViewModel.initializeDotFaceIfNeeded()
+        dotSdkViewModel.initializeDotSdkIfNeeded()
     }
 
     private fun setupFaceAutoCaptureViewModel() {
