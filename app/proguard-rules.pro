@@ -17,7 +17,6 @@
 -keep class com.innovatrics.dot.face.quality.HeadPose { *; }
 -keep class com.innovatrics.dot.face.quality.HeadPoseAttribute { *; }
 -keep class com.innovatrics.dot.face.quality.Wearables { *; }
--keep class com.innovatrics.dot.face.similarity.FaceMatcher$Result { *; }
 -keep class com.innovatrics.dot.image.BgraRawImage { *; }
 -keep class com.innovatrics.dot.image.Image { *; }
 -keep enum com.innovatrics.dot.image.ImageFormat { *; }

@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.16.0 - 2023-11-24
+### Changed
+- Update DOT SDK to 7.0.1.
+
+### Removed
+- Face Matcher sample.
+- Passive Liveness evaluation.
+
 ## 4.15.0 - 2023-11-02
 ### Changed
 - Update DOT SDK to 7.0.0.

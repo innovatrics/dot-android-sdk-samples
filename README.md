@@ -13,10 +13,9 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 |:--------------------------|:----------------------------------------------------------------------------------------------------------------------|
 | **Document Auto Capture** | Basic component sample.                                                                                               |
 | **NFC Reading**           | Combination of Document Auto Capture component with enabled MRZ recognition and NFC Travel Document Reader component. |
-| **Face Auto Capture**     | Component with Passive Liveness evaluation.                                                                           |
+| **Face Auto Capture**     | Basic component sample.                                                                                               |
 | **Smile Liveness**        | Basic component sample.                                                                                               |
 | **MagnifEye Liveness**    | Basic component sample.                                                                                               |
-| **Face Matcher**          | Perform face matching using image resources.                                                                          |
 
 In case when the samples do not work because of the expired DOT license, please contact `support@innovatrics.com` in order to obtain a new license file.
 

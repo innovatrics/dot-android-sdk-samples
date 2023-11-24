@@ -2,7 +2,6 @@
     <string name="app_name">DOT SDK Samples</string>
     <string name="navigation_destination_document_auto_capture">Document Auto Capture</string>
     <string name="navigation_destination_face_auto_capture">Face Auto Capture</string>
-    <string name="navigation_destination_face_matcher">Face Matcher</string>
     <string name="navigation_destination_home">Home</string>
     <string name="navigation_destination_magnifeye_liveness">MagnifEye Liveness</string>
     <string name="navigation_destination_nfc_reading">NFC Reading</string>
@@ -10,9 +9,7 @@
     <string name="sample_document_auto_capture_title">Document Auto Capture</string>
     <string name="sample_document_auto_capture_description">Basic component sample.</string>
     <string name="sample_face_auto_capture_title">Face Auto Capture</string>
-    <string name="sample_face_auto_capture_description">Component with Passive Liveness evaluation.</string>
-    <string name="sample_face_matcher_title">Face Matcher</string>
-    <string name="sample_face_matcher_description">Perform face matching using image resources.</string>
+    <string name="sample_face_auto_capture_description">Basic component sample.</string>
     <string name="sample_magnifeye_liveness_title">MagnifEye Liveness</string>
     <string name="sample_magnifeye_liveness_description">Basic component sample.</string>
     <string name="sample_magnifeye_liveness_summary">Use the Digital Identity Service in order to evaluate the MagnifEye liveness score. See: https://developers.innovatrics.com/digital-onboarding/technical/remote/dot-dis/latest/documentation/#_magnifeye_liveness_check</string>

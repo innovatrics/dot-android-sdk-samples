@@ -9,8 +9,6 @@ import com.innovatrics.dot.face.DotFaceLibrary
 import com.innovatrics.dot.face.DotFaceLibraryConfiguration
 import com.innovatrics.dot.face.detection.fast.DotFaceDetectionFastModule
 import com.innovatrics.dot.face.expressionneutral.DotFaceExpressionNeutralModule
-import com.innovatrics.dot.face.passiveliveness.DotFacePassiveLivenessModule
-import com.innovatrics.dot.face.verification.DotFaceVerificationModule
 import com.innovatrics.dot.nfc.DotNfcLibrary
 import java.io.InputStream
 import kotlinx.coroutines.CoroutineDispatcher
@@ -47,8 +45,6 @@ class InitializeDotSdkUseCase(
 
     private fun createDotFaceLibraryModules() = listOf(
         DotFaceDetectionFastModule.of(),
-        DotFaceVerificationModule.of(),
         DotFaceExpressionNeutralModule.of(),
-        DotFacePassiveLivenessModule.of(),
     )
 }

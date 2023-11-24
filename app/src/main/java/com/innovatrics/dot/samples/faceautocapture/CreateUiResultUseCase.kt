@@ -15,7 +15,6 @@ class CreateUiResultUseCase(
             confidence = faceAutoCaptureResult.detectedFace?.getConfidence(),
             faceAspects = faceAutoCaptureResult.detectedFace?.evaluateFaceAspects(),
             faceQuality = faceAutoCaptureResult.detectedFace?.evaluateFaceQuality(),
-            passiveLivenessFaceAttribute = faceAutoCaptureResult.detectedFace?.evaluatePassiveLiveness(),
         )
     }
 }

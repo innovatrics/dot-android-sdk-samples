@@ -5,7 +5,6 @@ import com.innovatrics.dot.nfc.NfcTravelDocumentReader
 import com.innovatrics.dot.nfc.NfcTravelDocumentReaderConfiguration
 import com.innovatrics.dot.nfc.security.CertificatesFactory
 import com.innovatrics.dot.samples.R
-import java.security.cert.X509Certificate
 
 class DefaultNfcTravelDocumentReaderFactory(
     private val resources: Resources,
@@ -19,9 +18,7 @@ class DefaultNfcTravelDocumentReaderFactory(
         return com.innovatrics.dot.nfc.NfcTravelDocumentReaderFactory.create(configuration)
     }
 
-    fun createAuthorityCertificates(resources: Resources): Set<X509Certificate> {
-        resources.openRawResource(R.raw.master_list).use { inputStream ->
-            return CertificatesFactory.create(inputStream)
-        }
+    private fun createAuthorityCertificates(resources: Resources) = resources.openRawResource(R.raw.master_list).use { inputStream ->
+        CertificatesFactory.create(inputStream)
     }
 }
