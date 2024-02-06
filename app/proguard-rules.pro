@@ -3,6 +3,7 @@
 -keep class com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.document.detection.DocumentDetector$Result { *; }
 -keep class com.innovatrics.dot.document.image.Corners { *; }
+-keep class com.innovatrics.dot.document.image.ImageParameters { *; }
 -keep enum com.innovatrics.dot.document.mrz.TravelDocumentType { *; }
 -keep class com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration { *; }
 -keep class com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration { *; }

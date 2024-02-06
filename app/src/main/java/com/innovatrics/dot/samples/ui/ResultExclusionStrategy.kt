@@ -6,15 +6,16 @@ import com.google.gson.FieldAttributes
 
 class ResultExclusionStrategy : ExclusionStrategy {
 
-    private val excludeObfuscatedFieldNames = listOf(
+    private val excludeFieldNames = listOf(
         "a",
+        "debugInfo",
     )
     private val excludeClasses = listOf(
         Bitmap::class.java,
     )
 
     override fun shouldSkipField(fieldAttributes: FieldAttributes): Boolean {
-        return excludeObfuscatedFieldNames.contains(fieldAttributes.name)
+        return excludeFieldNames.contains(fieldAttributes.name)
     }
 
     override fun shouldSkipClass(clazz: Class<*>): Boolean {
