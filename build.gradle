@@ -6,7 +6,7 @@ plugins {
 }
 
 ext {
-    dotVersion = '7.2.2'
+    dotVersion = '7.3.0'
     navigationVersion = '2.6.0'
 }
 
