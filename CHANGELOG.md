@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.20.0 - 2024-03-18
+### Changed
+- Update DOT SDK to 7.4.0.
+- Sample NFC Reading uses the new UI NFC Travel Document Reader component.
+
 ## 4.19.0 - 2024-02-23
 ### Changed
 - Update DOT SDK to 7.3.0.

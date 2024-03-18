@@ -9,13 +9,13 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 
 ## Samples
 
-| Sample                    | Description                                                                                                           |
-|:--------------------------|:----------------------------------------------------------------------------------------------------------------------|
-| **Document Auto Capture** | Basic component sample.                                                                                               |
-| **NFC Reading**           | Combination of Document Auto Capture component with enabled MRZ recognition and NFC Travel Document Reader component. |
-| **Face Auto Capture**     | Basic component sample.                                                                                               |
-| **Smile Liveness**        | Basic component sample.                                                                                               |
-| **MagnifEye Liveness**    | Basic component sample.                                                                                               |
+| Sample                    | Description                                                                                                              |
+|:--------------------------|:-------------------------------------------------------------------------------------------------------------------------|
+| **Document Auto Capture** | Basic component sample.                                                                                                  |
+| **NFC Reading**           | Combination of Document Auto Capture component with enabled MRZ recognition and UI NFC Travel Document Reader component. |
+| **Face Auto Capture**     | Basic component sample.                                                                                                  |
+| **Smile Liveness**        | Basic component sample.                                                                                                  |
+| **MagnifEye Liveness**    | Basic component sample.                                                                                                  |
 
 In case when the samples do not work because of the expired DOT license, please contact `support@innovatrics.com` in order to obtain a new license file.
 

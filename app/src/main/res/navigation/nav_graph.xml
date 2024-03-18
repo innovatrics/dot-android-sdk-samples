@@ -66,21 +66,26 @@
             app:argType="com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration" />
 
         <action
-            android:id="@+id/action_NfcKeyCaptureFragment_to_StartNfcReadingFragment"
-            app:destination="@id/StartNfcReadingFragment"
+            android:id="@+id/action_NfcKeyCaptureFragment_to_NfcReadingFragment"
+            app:destination="@id/NfcReadingFragment"
             app:popUpTo="@id/HomeFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/StartNfcReadingFragment"
-        android:name="com.innovatrics.dot.samples.nfcreading.StartNfcReadingFragment"
+        android:id="@+id/NfcReadingFragment"
+        android:name="com.innovatrics.dot.samples.nfcreading.NfcReadingFragment"
         android:label="@string/navigation_destination_nfc_reading"
-        tools:layout="@layout/fragment_start_nfc_reading">
+        tools:layout="@layout/fragment_nfc_reading">
 
         <action
-            android:id="@+id/action_StartNfcReadingFragment_to_NfcReadingResultFragment"
+            android:id="@+id/action_NfcReadingFragment_to_NfcReadingResultFragment"
             app:destination="@id/NfcReadingResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+        <action
+            android:id="@+id/action_NfcReadingFragment_to_NfcReadingErrorFragment"
+            app:destination="@id/NfcReadingErrorFragment"
             app:popUpTo="@id/HomeFragment" />
 
     </fragment>
@@ -89,13 +94,19 @@
         android:id="@+id/NfcReadingResultFragment"
         android:name="com.innovatrics.dot.samples.nfcreading.NfcReadingResultFragment"
         android:label="@string/navigation_destination_nfc_reading"
-        tools:layout="@layout/fragment_document_auto_capture_result" />
+        tools:layout="@layout/fragment_nfc_reading_result" />
+
+    <fragment
+        android:id="@+id/NfcReadingErrorFragment"
+        android:name="com.innovatrics.dot.samples.nfcreading.NfcReadingErrorFragment"
+        android:label="@string/navigation_destination_nfc_reading"
+        tools:layout="@layout/fragment_nfc_reading_error" />
 
     <fragment
         android:id="@+id/BasicFaceAutoCaptureFragment"
         android:name="com.innovatrics.dot.samples.faceautocapture.BasicFaceAutoCaptureFragment"
         android:label="@string/navigation_destination_face_auto_capture"
-        tools:layout="@layout/fragment_face_auto_capture">
+        tools:layout="@layout/dot_face_fragment_face_auto_capture">
 
         <argument
             android:name="configuration"
@@ -118,7 +129,7 @@
         android:id="@+id/BasicSmileLivenessFragment"
         android:name="com.innovatrics.dot.samples.smileliveness.BasicSmileLivenessFragment"
         android:label="@string/navigation_destination_smile_liveness"
-        tools:layout="@layout/fragment_smile_liveness">
+        tools:layout="@layout/dot_face_fragment_smile_liveness">
 
         <argument
             android:name="configuration"

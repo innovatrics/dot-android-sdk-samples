@@ -1,15 +1,17 @@
 package com.innovatrics.dot.samples.nfcreading
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.innovatrics.dot.document.mrz.MachineReadableZone
+import com.innovatrics.dot.nfc.TravelDocument
+import com.innovatrics.dot.nfc.reader.ui.NfcTravelDocumentReaderFragment
 import kotlinx.coroutines.launch
 
 class NfcReadingViewModel(
-    private val readTravelDocumentUseCase: ReadTravelDocumentUseCase,
+    private val resolveAuthorityCertificatesFileUseCase: ResolveAuthorityCertificatesFileUseCase,
+    private val createNfcReadingResultUseCase: CreateNfcReadingResultUseCase,
 ) : ViewModel() {
 
     private val mutableState: MutableLiveData<NfcReadingState> = MutableLiveData()
@@ -19,23 +21,26 @@ class NfcReadingViewModel(
         mutableState.value = NfcReadingState()
     }
 
-    fun resolveAndSetNfcKey(machineReadableZone: MachineReadableZone) {
-        mutableState.value = NfcReadingState(nfcKey = createNfcKey(machineReadableZone))
-    }
-
-    fun read(intent: Intent) {
+    fun setupConfiguration(machineReadableZone: MachineReadableZone) {
         viewModelScope.launch {
-            mutableState.value = state.value!!.copy(isReading = true)
-            mutableState.value = readSafely(intent)
+            val configuration = NfcTravelDocumentReaderFragment.Configuration(
+                nfcKey = createNfcKey(machineReadableZone),
+                authorityCertificatesFilePath = resolveAuthorityCertificatesFileUseCase().path,
+            )
+            mutableState.value = state.value!!.copy(configuration = configuration)
         }
     }
 
-    private suspend fun readSafely(intent: Intent): NfcReadingState {
-        return try {
-            val result = readTravelDocumentUseCase(intent, state.value!!.nfcKey!!)
-            state.value!!.copy(isReading = false, result = result)
-        } catch (e: Exception) {
-            state.value!!.copy(isReading = false, errorMessage = e.message)
+    fun setTravelDocument(travelDocument: TravelDocument) {
+        viewModelScope.launch {
+            val result = createNfcReadingResultUseCase(travelDocument)
+            mutableState.value = state.value!!.copy(result = result)
+        }
+    }
+
+    fun setError(exception: Exception) {
+        viewModelScope.launch {
+            mutableState.value = state.value!!.copy(errorMessage = exception.message ?: exception::class.java.name)
         }
     }
 

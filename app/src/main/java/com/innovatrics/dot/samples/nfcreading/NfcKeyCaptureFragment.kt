@@ -21,7 +21,7 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
-    private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels { NfcReadingViewModelFactory(resources) }
+    private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels { NfcReadingViewModelFactory(requireActivity().application) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,8 +49,8 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
     private fun setupNfcReadingViewModel() {
         nfcReadingViewModel.initializeState()
         nfcReadingViewModel.state.observe(viewLifecycleOwner) { state ->
-            state.nfcKey?.let {
-                findNavController().navigate(R.id.action_NfcKeyCaptureFragment_to_StartNfcReadingFragment)
+            state.configuration?.let {
+                findNavController().navigate(R.id.action_NfcKeyCaptureFragment_to_NfcReadingFragment)
             }
         }
     }
@@ -63,7 +63,7 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     override fun onCaptured(result: DocumentAutoCaptureResult) {
-        nfcReadingViewModel.resolveAndSetNfcKey(result.machineReadableZone!!)
+        nfcReadingViewModel.setupConfiguration(result.machineReadableZone!!)
     }
 
     override fun onProcessed(detection: DocumentAutoCaptureDetection) {
