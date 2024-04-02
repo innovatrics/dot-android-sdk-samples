@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.21.0 - 2024-04-02
+### Changed
+- Update DOT SDK to 7.4.2.
+- Update Android Gradle Plugin to 8.3.1.
+- Update Gradle and Gradle Wrapper to 8.4.
+- Update `compileSdk` and `targetSdk` to 34.
+- Update `compileOptions.sourceCompatibility` and `compileOptions.targetCompatibility` to java version `17`.
+- Update `kotlinOptions.jvmTarget` to `17`.
+
 ## 4.20.0 - 2024-03-18
 ### Changed
 - Update DOT SDK to 7.4.0.
