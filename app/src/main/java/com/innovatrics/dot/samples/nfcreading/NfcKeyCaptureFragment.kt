@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureDetection
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
+import com.innovatrics.dot.document.autocapture.MrzValidation
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.MainViewModel
@@ -27,6 +28,10 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDotSdkViewModel()
         setupNfcReadingViewModel()
+    }
+
+    override fun provideConfiguration(): Configuration {
+        return Configuration(mrzValidation = MrzValidation.VALIDATE_ALWAYS)
     }
 
     private fun setupDotSdkViewModel() {
@@ -67,8 +72,5 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     override fun onProcessed(detection: DocumentAutoCaptureDetection) {
-    }
-
-    override fun onStopped() {
     }
 }

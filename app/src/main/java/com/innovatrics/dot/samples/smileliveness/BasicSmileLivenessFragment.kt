@@ -29,6 +29,10 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
         setupSmileLivenessViewModel()
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -67,8 +71,5 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
 
     override fun onFinished(result: SmileLivenessResult) {
         smileLivenessViewModel.process(result)
-    }
-
-    override fun onStopped() {
     }
 }

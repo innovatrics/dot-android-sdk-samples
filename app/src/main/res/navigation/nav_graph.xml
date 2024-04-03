@@ -38,10 +38,6 @@
         android:label="@string/navigation_destination_document_auto_capture"
         tools:layout="@layout/fragment_document_auto_capture">
 
-        <argument
-            android:name="configuration"
-            app:argType="com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration" />
-
         <action
             android:id="@+id/action_BasicDocumentAutoCaptureFragment_to_DocumentAutoCaptureResultFragment"
             app:destination="@id/DocumentAutoCaptureResultFragment"
@@ -60,10 +56,6 @@
         android:name="com.innovatrics.dot.samples.nfcreading.NfcKeyCaptureFragment"
         android:label="@string/navigation_destination_nfc_reading"
         tools:layout="@layout/fragment_document_auto_capture">
-
-        <argument
-            android:name="configuration"
-            app:argType="com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration" />
 
         <action
             android:id="@+id/action_NfcKeyCaptureFragment_to_NfcReadingFragment"
@@ -108,10 +100,6 @@
         android:label="@string/navigation_destination_face_auto_capture"
         tools:layout="@layout/dot_face_fragment_face_auto_capture">
 
-        <argument
-            android:name="configuration"
-            app:argType="com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration" />
-
         <action
             android:id="@+id/action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment"
             app:destination="@id/FaceAutoCaptureResultFragment"
@@ -131,10 +119,6 @@
         android:label="@string/navigation_destination_smile_liveness"
         tools:layout="@layout/dot_face_fragment_smile_liveness">
 
-        <argument
-            android:name="configuration"
-            app:argType="com.innovatrics.dot.face.liveness.smile.SmileLivenessConfiguration" />
-
         <action
             android:id="@+id/action_BasicSmileLivenessFragment_to_SmileLivenessResultFragment"
             app:destination="@id/SmileLivenessResultFragment"
@@ -153,10 +137,6 @@
         android:name="com.innovatrics.dot.samples.magnifeyeliveness.BasicMagnifEyeLivenessFragment"
         android:label="@string/navigation_destination_magnifeye_liveness"
         tools:layout="@layout/dot_face_fragment_magnifeye_liveness">
-
-        <argument
-            android:name="configuration"
-            app:argType="com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration" />
 
         <action
             android:id="@+id/action_BasicMagnifEyeLivenessFragment_to_MagnifEyeLivenessResultFragment"

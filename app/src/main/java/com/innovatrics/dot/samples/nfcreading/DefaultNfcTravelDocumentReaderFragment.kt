@@ -15,4 +15,8 @@ class DefaultNfcTravelDocumentReaderFragment : NfcTravelDocumentReaderFragment()
     override fun onFailed(exception: Exception) {
         nfcReadingViewModel.setError(exception)
     }
+
+    override fun provideConfiguration(): Configuration {
+        return nfcReadingViewModel.state.value?.configuration!!
+    }
 }

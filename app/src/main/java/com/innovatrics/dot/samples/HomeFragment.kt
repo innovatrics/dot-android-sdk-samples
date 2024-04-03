@@ -3,18 +3,8 @@ package com.innovatrics.dot.samples
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration
-import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
-import com.innovatrics.dot.document.autocapture.MrzValidation
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
-import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration
-import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessFragment
-import com.innovatrics.dot.face.liveness.smile.SmileLivenessConfiguration
-import com.innovatrics.dot.face.liveness.smile.SmileLivenessFragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -44,40 +34,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setupDocumentAutoCaptureStartButton() {
         documentAutoCaptureStartButton.setOnClickListener {
-            val bundle = bundleOf(DocumentAutoCaptureFragment.CONFIGURATION to DocumentAutoCaptureConfiguration.Builder().build())
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicDocumentAutoCaptureFragment, bundle)
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicDocumentAutoCaptureFragment)
         }
     }
 
     private fun setupNfcReadingStartButton() {
         nfcReadingStartButton.setOnClickListener {
-            val bundle = bundleOf(
-                DocumentAutoCaptureFragment.CONFIGURATION to DocumentAutoCaptureConfiguration.Builder()
-                    .mrzValidation(MrzValidation.VALIDATE_ALWAYS)
-                    .build(),
-            )
-            findNavController().navigate(R.id.action_HomeFragment_to_NfcKeyCaptureFragment, bundle)
+            findNavController().navigate(R.id.action_HomeFragment_to_NfcKeyCaptureFragment)
         }
     }
 
     private fun setupFaceAutoCaptureStartButton() {
         faceAutoCaptureStartButton.setOnClickListener {
-            val bundle = bundleOf(FaceAutoCaptureFragment.CONFIGURATION to FaceAutoCaptureConfiguration.Builder().build())
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment, bundle)
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment)
         }
     }
 
     private fun setupSmileLivenessStartButton() {
         smileLivenessStartButton.setOnClickListener {
-            val bundle = bundleOf(SmileLivenessFragment.CONFIGURATION to SmileLivenessConfiguration.Builder().build())
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicSmileLivenessFragment, bundle)
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicSmileLivenessFragment)
         }
     }
 
     private fun setupMagnifEyeLivenessStartButton() {
         magnifEyeLivenessStartButton.setOnClickListener {
-            val bundle = bundleOf(MagnifEyeLivenessFragment.CONFIGURATION to MagnifEyeLivenessConfiguration.Builder().build())
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment, bundle)
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment)
         }
     }
 }

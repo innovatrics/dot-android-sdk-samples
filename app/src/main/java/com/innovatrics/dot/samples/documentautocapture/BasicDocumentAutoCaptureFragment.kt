@@ -29,6 +29,10 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
         setupDocumentAutoCaptureViewModel()
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -67,8 +71,5 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     override fun onProcessed(detection: DocumentAutoCaptureDetection) {
-    }
-
-    override fun onStopped() {
     }
 }

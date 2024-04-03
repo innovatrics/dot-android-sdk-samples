@@ -29,6 +29,10 @@ class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
         setupMagnifEyeLivenessViewModel()
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -64,8 +68,5 @@ class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
     }
 
     override fun onProcessed(detection: FaceAutoCaptureDetection) {
-    }
-
-    override fun onStopped() {
     }
 }

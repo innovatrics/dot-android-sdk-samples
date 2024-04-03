@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.nfc.reader.ui.NfcTravelDocumentReaderFragment
 import com.innovatrics.dot.samples.R
 
 class NfcReadingFragment : Fragment(R.layout.fragment_nfc_reading) {
@@ -24,11 +23,8 @@ class NfcReadingFragment : Fragment(R.layout.fragment_nfc_reading) {
 
     private fun initNfcTravelDocumentReaderFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            val arguments = Bundle().apply {
-                putSerializable(NfcTravelDocumentReaderFragment.CONFIGURATION, nfcReadingViewModel.state.value!!.configuration!!)
-            }
-            parentFragmentManager.commit {
-                replace(R.id.container, DefaultNfcTravelDocumentReaderFragment::class.java, arguments)
+            childFragmentManager.commit {
+                replace(R.id.container, DefaultNfcTravelDocumentReaderFragment::class.java, null)
             }
         }
     }

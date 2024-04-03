@@ -29,6 +29,10 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
         setupFaceAutoCaptureViewModel()
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -62,9 +66,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     override fun onNoCameraPermission() {
         mainViewModel.notifyNoCameraPermission()
-    }
-
-    override fun onStopped() {
     }
 
     override fun onCandidateSelectionStarted() {
