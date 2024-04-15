@@ -1,3 +1,5 @@
+import java.net.URI
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,18 +7,19 @@ pluginManagement {
         mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         maven {
-            url 'https://maven.innovatrics.com/releases'
+            url = URI("https://maven.innovatrics.com/releases")
         }
         maven {
-            url 'https://jitpack.io'
+            url = URI("https://jitpack.io")
         }
     }
 }
 rootProject.name = "dot-android-sdk-samples"
-include ':app'
+include(":app")

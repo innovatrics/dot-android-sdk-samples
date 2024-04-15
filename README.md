@@ -4,7 +4,7 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 
 ## Setup
 
-1. To obtain a license file, please contact `support@innovatrics.com`.
+1. To obtain a license file, please contact `sales@innovatrics.com`.
 1. Copy the license file to `app/src/main/res/raw/dot_license.lic`.
 
 ## Samples
@@ -17,7 +17,7 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 | **Smile Liveness**        | Basic component sample.                                                                                                  |
 | **MagnifEye Liveness**    | Basic component sample.                                                                                                  |
 
-In case when the samples do not work because of the expired DOT license, please contact `support@innovatrics.com` in order to obtain a new license file.
+In case when the samples do not work because of the expired DOT license, please contact `sales@innovatrics.com` in order to obtain a new license file.
 
 ## Changelog
 

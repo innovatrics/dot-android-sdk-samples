@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.23.0 - 2024-04-15
+### Added
+- Optimize application size by using excludes in Gradle `android.packaging.resources` block.
+
+### Changed
+- Update DOT SDK to 7.5.1.
+- Convert Gradle files from Groovy to Kotlin.
+- Update Android Gradle Plugin to 8.3.2.
+
 ## 4.22.0 - 2024-04-03
 ### Changed
 - Update DOT SDK to 7.5.0.
