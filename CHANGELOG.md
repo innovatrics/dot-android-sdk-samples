@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.24.0 - 2024-04-26
+### Changed
+- Update DOT SDK to 7.5.2.
+
 ## 4.23.0 - 2024-04-15
 ### Added
 - Optimize application size by using excludes in Gradle `android.packaging.resources` block.
