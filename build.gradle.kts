@@ -5,5 +5,5 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0" apply false
 }
 
-project.extra["dotVersion"] = "7.5.6"
+project.extra["dotVersion"] = "7.5.7"
 project.extra["navigationVersion"] = "2.7.7"
