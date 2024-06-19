@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.30.0 - 2024-06-19
+### Changed
+- Update DOT SDK to 7.5.8.
+- Update Android Gradle Plugin to 8.5.0.
+- Update Gradle to 8.7.
+
 ## 4.29.0 - 2024-06-04
 ### Changed
 - Update DOT SDK to 7.5.7.

@@ -13,7 +13,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "4.29.0"
+        versionName = "4.30.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,7 +34,7 @@ android {
     }
 
     lint {
-        disable += "conLocation"
+        disable += "MonochromeLauncherIcon"
     }
 
     packaging {
@@ -52,7 +52,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:${rootProject.extra["navigationVersion"]}")
     implementation("androidx.navigation:navigation-ui-ktx:${rootProject.extra["navigationVersion"]}")
     implementation("com.github.Tgo1014:JP2ForAndroid:1.0.4")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("com.innovatrics.dot:dot-document:${rootProject.extra["dotVersion"]}")
     implementation("com.innovatrics.dot:dot-face-detection-fast:${rootProject.extra["dotVersion"]}")
     implementation("com.innovatrics.dot:dot-face-expression-neutral:${rootProject.extra["dotVersion"]}")
