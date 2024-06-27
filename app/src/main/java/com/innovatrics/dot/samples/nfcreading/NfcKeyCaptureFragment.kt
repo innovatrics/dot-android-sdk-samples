@@ -64,9 +64,6 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
         mainViewModel.notifyNoCameraPermission()
     }
 
-    override fun onCandidateSelectionStarted() {
-    }
-
     override fun onCaptured(result: DocumentAutoCaptureResult) {
         nfcReadingViewModel.setupConfiguration(result.machineReadableZone!!)
     }

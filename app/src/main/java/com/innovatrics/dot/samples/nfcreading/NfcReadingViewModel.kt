@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.innovatrics.dot.document.mrz.MachineReadableZone
+import com.innovatrics.dot.mrz.MachineReadableZone
 import com.innovatrics.dot.nfc.TravelDocument
 import com.innovatrics.dot.nfc.reader.ui.NfcTravelDocumentReaderFragment
 import kotlinx.coroutines.launch

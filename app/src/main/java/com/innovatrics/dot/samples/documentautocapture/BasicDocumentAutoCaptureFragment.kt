@@ -63,9 +63,6 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
         mainViewModel.notifyNoCameraPermission()
     }
 
-    override fun onCandidateSelectionStarted() {
-    }
-
     override fun onCaptured(result: DocumentAutoCaptureResult) {
         documentAutoCaptureViewModel.process(result)
     }

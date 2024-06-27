@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jlleitschuh.gradle.ktlint")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jlleitschuh.gradle.ktlint)
 }
 
 android {
@@ -13,7 +13,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "4.30.0"
+        versionName = "4.31.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,15 +48,15 @@ android {
 }
 
 dependencies {
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:${rootProject.extra["navigationVersion"]}")
-    implementation("androidx.navigation:navigation-ui-ktx:${rootProject.extra["navigationVersion"]}")
-    implementation("com.github.Tgo1014:JP2ForAndroid:1.0.4")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("com.innovatrics.dot:dot-document:${rootProject.extra["dotVersion"]}")
-    implementation("com.innovatrics.dot:dot-face-detection-fast:${rootProject.extra["dotVersion"]}")
-    implementation("com.innovatrics.dot:dot-face-expression-neutral:${rootProject.extra["dotVersion"]}")
-    implementation("com.innovatrics.dot:dot-nfc:${rootProject.extra["dotVersion"]}")
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.com.github.tgo1014.jp2ForAndroid)
+    implementation(libs.com.google.android.material)
+    implementation(libs.com.innovatrics.dot.document)
+    implementation(libs.com.innovatrics.dot.face.detection.fast)
+    implementation(libs.com.innovatrics.dot.face.expression.neutral)
+    implementation(libs.com.innovatrics.dot.nfc)
 }
 
 ktlint {

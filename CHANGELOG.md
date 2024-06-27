@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.31.0 - 2024-06-27
+### Changed
+- Update DOT SDK to 8.0.0.
+- Update Kotlin to 1.9.24.
+- Migrate to version catalogs (TOML).
+
 ## 4.30.0 - 2024-06-19
 ### Changed
 - Update DOT SDK to 7.5.8.

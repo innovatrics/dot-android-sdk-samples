@@ -11,6 +11,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
+import com.innovatrics.dot.face.detection.FaceDetectionQuery
+import com.innovatrics.dot.face.quality.ExpressionQuery
+import com.innovatrics.dot.face.quality.EyesExpressionQuery
+import com.innovatrics.dot.face.quality.FaceImageQualityQuery
+import com.innovatrics.dot.face.quality.FaceQualityQuery
+import com.innovatrics.dot.face.quality.HeadPoseQuery
+import com.innovatrics.dot.face.quality.WearablesQuery
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.MainViewModel
@@ -29,9 +36,35 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
         setupFaceAutoCaptureViewModel()
     }
 
-    override fun provideConfiguration(): Configuration {
-        return Configuration()
-    }
+    override fun provideConfiguration() = Configuration(
+        query = FaceDetectionQuery(
+            faceQuality = FaceQualityQuery(
+                imageQuality = FaceImageQualityQuery(
+                    evaluateSharpness = true,
+                    evaluateBrightness = true,
+                    evaluateContrast = true,
+                    evaluateUniqueIntensityLevels = true,
+                    evaluateShadow = true,
+                    evaluateSpecularity = true,
+                ),
+                headPose = HeadPoseQuery(
+                    evaluateRoll = true,
+                    evaluateYaw = true,
+                    evaluatePitch = true,
+                ),
+                wearables = WearablesQuery(
+                    evaluateGlasses = true,
+                ),
+                expression = ExpressionQuery(
+                    eyes = EyesExpressionQuery(
+                        evaluateRightEye = true,
+                        evaluateLeftEye = true,
+                    ),
+                    evaluateMouth = true,
+                ),
+            ),
+        ),
+    )
 
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
@@ -66,9 +99,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     override fun onNoCameraPermission() {
         mainViewModel.notifyNoCameraPermission()
-    }
-
-    override fun onCandidateSelectionStarted() {
     }
 
     override fun onCaptured(result: FaceAutoCaptureResult) {
