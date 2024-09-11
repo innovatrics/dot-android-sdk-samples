@@ -15,8 +15,8 @@
             app:destination="@id/BasicDocumentAutoCaptureFragment" />
 
         <action
-            android:id="@+id/action_HomeFragment_to_NfcKeyCaptureFragment"
-            app:destination="@id/NfcKeyCaptureFragment" />
+            android:id="@+id/action_HomeFragment_to_PasswordCaptureFragment"
+            app:destination="@id/PasswordCaptureFragment" />
 
         <action
             android:id="@+id/action_HomeFragment_to_BasicFaceAutoCaptureFragment"
@@ -52,13 +52,13 @@
         tools:layout="@layout/fragment_document_auto_capture_result" />
 
     <fragment
-        android:id="@+id/NfcKeyCaptureFragment"
-        android:name="com.innovatrics.dot.samples.nfcreading.NfcKeyCaptureFragment"
+        android:id="@+id/PasswordCaptureFragment"
+        android:name="com.innovatrics.dot.samples.nfcreading.PasswordCaptureFragment"
         android:label="@string/navigation_destination_nfc_reading"
         tools:layout="@layout/fragment_document_auto_capture">
 
         <action
-            android:id="@+id/action_NfcKeyCaptureFragment_to_NfcReadingFragment"
+            android:id="@+id/action_PasswordCaptureFragment_to_NfcReadingFragment"
             app:destination="@id/NfcReadingFragment"
             app:popUpTo="@id/HomeFragment" />
 

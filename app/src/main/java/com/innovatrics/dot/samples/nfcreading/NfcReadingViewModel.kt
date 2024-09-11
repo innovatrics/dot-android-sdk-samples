@@ -24,7 +24,7 @@ class NfcReadingViewModel(
     fun setupConfiguration(machineReadableZone: MachineReadableZone) {
         viewModelScope.launch {
             val configuration = NfcTravelDocumentReaderFragment.Configuration(
-                nfcKey = createNfcKey(machineReadableZone),
+                password = createPassword(machineReadableZone),
                 authorityCertificatesFilePath = resolveAuthorityCertificatesFileUseCase().path,
             )
             mutableState.value = state.value!!.copy(configuration = configuration)

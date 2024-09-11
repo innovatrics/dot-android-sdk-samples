@@ -40,7 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setupNfcReadingStartButton() {
         nfcReadingStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_NfcKeyCaptureFragment)
+            findNavController().navigate(R.id.action_HomeFragment_to_PasswordCaptureFragment)
         }
     }
 

@@ -18,7 +18,7 @@ import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
 import kotlinx.coroutines.launch
 
-class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
+class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
@@ -55,7 +55,7 @@ class NfcKeyCaptureFragment : DocumentAutoCaptureFragment() {
         nfcReadingViewModel.initializeState()
         nfcReadingViewModel.state.observe(viewLifecycleOwner) { state ->
             state.configuration?.let {
-                findNavController().navigate(R.id.action_NfcKeyCaptureFragment_to_NfcReadingFragment)
+                findNavController().navigate(R.id.action_PasswordCaptureFragment_to_NfcReadingFragment)
             }
         }
     }
