@@ -1,12 +1,12 @@
 [versions]
 androidxConstraintlayout = "2.1.4"
-androidxNavigation = "2.8.0"
-comAndroid = "8.6.0"
+androidxNavigation = "2.8.3"
+comAndroid = "8.7.1"
 orgJetbrainsKotlinAndroid = "1.9.24"
 orgJlleitschuhGradleKtlint = "12.1.1"
 comGithubTgo1014JP2ForAndroid = "1.0.4"
 comGoogleAndroidMaterial = "1.12.0"
-comInnovatricsDot = "8.4.0"
+comInnovatricsDot = "8.5.0"
 
 [libraries]
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
@@ -18,6 +18,7 @@ com-innovatrics-dot-document = { group = "com.innovatrics.dot", name = "dot-docu
 com-innovatrics-dot-face-detection-fast = { group = "com.innovatrics.dot", name = "dot-face-detection-fast", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-face-expression-neutral = { group = "com.innovatrics.dot", name = "dot-face-expression-neutral", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-nfc = { group = "com.innovatrics.dot", name = "dot-nfc", version.ref = "comInnovatricsDot" }
+com-innovatrics-dot-palm-detection = { group = "com.innovatrics.dot", name = "dot-palm-detection", version.ref = "comInnovatricsDot" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "comAndroid" }

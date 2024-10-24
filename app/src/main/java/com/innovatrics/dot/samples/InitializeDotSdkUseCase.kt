@@ -10,6 +10,9 @@ import com.innovatrics.dot.face.DotFaceLibraryConfiguration
 import com.innovatrics.dot.face.detection.fast.DotFaceDetectionFastModule
 import com.innovatrics.dot.face.expressionneutral.DotFaceExpressionNeutralModule
 import com.innovatrics.dot.nfc.DotNfcLibrary
+import com.innovatrics.dot.palm.DotPalmLibrary
+import com.innovatrics.dot.palm.DotPalmLibraryConfiguration
+import com.innovatrics.dot.palm.detection.DotPalmDetectionModule
 import java.io.InputStream
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -32,19 +35,26 @@ class InitializeDotSdkUseCase(
             DotDocumentLibrary(),
             createDotFaceLibrary(),
             DotNfcLibrary(),
+            createDotPalmLibrary(),
         ),
     )
 
     private fun readLicenseBytes(resources: Resources) = resources.openRawResource(R.raw.dot_license).use(InputStream::readBytes)
 
-    private fun createDotFaceLibrary(): DotFaceLibrary {
-        val modules = createDotFaceLibraryModules()
-        val configuration = DotFaceLibraryConfiguration(modules)
-        return DotFaceLibrary(configuration)
-    }
+    private fun createDotFaceLibrary() = DotFaceLibrary(
+        configuration = DotFaceLibraryConfiguration(
+            modules = listOf(
+                DotFaceDetectionFastModule.of(),
+                DotFaceExpressionNeutralModule.of(),
+            ),
+        ),
+    )
 
-    private fun createDotFaceLibraryModules() = listOf(
-        DotFaceDetectionFastModule.of(),
-        DotFaceExpressionNeutralModule.of(),
+    private fun createDotPalmLibrary() = DotPalmLibrary(
+        configuration = DotPalmLibraryConfiguration(
+            modules = listOf(
+                DotPalmDetectionModule(),
+            ),
+        ),
     )
 }

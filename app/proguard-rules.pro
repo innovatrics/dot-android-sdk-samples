@@ -1,15 +1,11 @@
 -keep class com.innovatrics.dot.core.geometry.PointDouble { *; }
 -keep class com.innovatrics.dot.document.autocapture.DetectionPosition { *; }
--keep class com.innovatrics.dot.document.autocapture.DocumentAutoCaptureConfiguration { *; }
 -keep class com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.document.detection.DocumentDetector$Document { *; }
 -keep class com.innovatrics.dot.document.image.ImageParameters { *; }
--keep class com.innovatrics.dot.face.autocapture.FaceAutoCaptureConfiguration { *; }
 -keep class com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.face.commons.autocapture.DetectionPosition { *; }
 -keep class com.innovatrics.dot.face.detection.FaceDetector$Face { *; }
--keep class com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessConfiguration { *; }
--keep class com.innovatrics.dot.face.liveness.smile.SmileLivenessConfiguration { *; }
 -keep class com.innovatrics.dot.face.quality.Expression { *; }
 -keep class com.innovatrics.dot.face.quality.EyesExpression { *; }
 -keep class com.innovatrics.dot.face.quality.FaceAspects { *; }
@@ -54,6 +50,11 @@
 -keep class com.innovatrics.dot.nfc.NameOfHolder { *; }
 -keep class com.innovatrics.dot.nfc.OptionalDetails { *; }
 -keep class com.innovatrics.dot.nfc.TravelDocument { *; }
+-keep class com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult { *; }
+-keep class com.innovatrics.dot.palm.detection.DetectionPosition { *; }
+-keep class com.innovatrics.dot.palm.detection.PalmDetector$Palm { *; }
+-keep class com.innovatrics.dot.palm.image.ImageParameters { *; }
 -keep class com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.faceautocapture.FaceAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.nfcreading.NfcReadingResult { *; }
+-keep class com.innovatrics.dot.samples.palmautocapture.PalmAutoCaptureResult { *; }

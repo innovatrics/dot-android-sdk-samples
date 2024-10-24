@@ -16,6 +16,7 @@ A collection of quickstart samples demonstrating the DOT Android SDK. [Read more
 | **Face Auto Capture**     | Basic component sample.                                                                                                  |
 | **Smile Liveness**        | Basic component sample.                                                                                                  |
 | **MagnifEye Liveness**    | Basic component sample.                                                                                                  |
+| **Palm Auto Capture**     | Basic component sample.                                                                                                  |
 
 In case when the samples do not work because of the expired DOT license, please contact `sales@innovatrics.com` in order to obtain a new license file.
 

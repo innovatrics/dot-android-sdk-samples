@@ -13,6 +13,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var faceAutoCaptureStartButton: Button
     private lateinit var smileLivenessStartButton: Button
     private lateinit var magnifEyeLivenessStartButton: Button
+    private lateinit var palmAutoCaptureStartButton: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,6 +23,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupFaceAutoCaptureStartButton()
         setupSmileLivenessStartButton()
         setupMagnifEyeLivenessStartButton()
+        setupPalmAutoCaptureStartButton()
     }
 
     private fun setViews(view: View) {
@@ -30,6 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         faceAutoCaptureStartButton = view.findViewById(R.id.face_auto_capture_start)
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
         magnifEyeLivenessStartButton = view.findViewById(R.id.magnifeye_liveness_start)
+        palmAutoCaptureStartButton = view.findViewById(R.id.palm_auto_capture_start)
     }
 
     private fun setupDocumentAutoCaptureStartButton() {
@@ -59,6 +62,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupMagnifEyeLivenessStartButton() {
         magnifEyeLivenessStartButton.setOnClickListener {
             findNavController().navigate(R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment)
+        }
+    }
+
+    private fun setupPalmAutoCaptureStartButton() {
+        palmAutoCaptureStartButton.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicPalmAutoCaptureFragment)
         }
     }
 }

@@ -13,7 +13,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "4.37.0"
+        versionName = "4.38.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.com.innovatrics.dot.face.detection.fast)
     implementation(libs.com.innovatrics.dot.face.expression.neutral)
     implementation(libs.com.innovatrics.dot.nfc)
+    implementation(libs.com.innovatrics.dot.palm.detection)
 }
 
 ktlint {

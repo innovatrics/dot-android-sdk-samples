@@ -5,13 +5,15 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+typealias SdkMagnifEyeLivenessResult = com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult
+
 class CreateUiResultUseCase(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 
-    suspend operator fun invoke(magnifEyeLivenessResult: com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(dispatcher) {
+    suspend operator fun invoke(sdkMagnifEyeLivenessResult: SdkMagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(dispatcher) {
         MagnifEyeLivenessResult(
-            bitmap = BitmapFactory.create(magnifEyeLivenessResult.bgrRawImage),
+            bitmap = BitmapFactory.create(sdkMagnifEyeLivenessResult.bgrRawImage),
         )
     }
 }
