@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.39.0 - 2024-10-28
+### Changed
+- Update DOT SDK to 8.5.1.
+
 ## 4.38.0 - 2024-10-24
 ### Added
 - New sample: Palm Auto Capture.
