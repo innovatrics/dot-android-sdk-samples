@@ -13,8 +13,10 @@ class NfcReadingViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>) = NfcReadingViewModel(
         resolveAuthorityCertificatesFileUseCase = ResolveAuthorityCertificatesFileUseCase(
             application = application,
-            resourceCopier = RawResourceCopier(application.resources),
+            resourceCopier = RawResourceCopier(
+                resources = application.resources,
+            ),
         ),
-        createNfcReadingResultUseCase = CreateNfcReadingResultUseCase(),
+        createUiResultUseCase = CreateUiResultUseCase(),
     ) as T
 }

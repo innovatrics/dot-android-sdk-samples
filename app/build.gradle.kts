@@ -4,16 +4,20 @@ plugins {
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint)
 }
 
+kotlin {
+    jvmToolchain(jdkVersion = 17)
+}
+
 android {
     namespace = "com.innovatrics.dot.samples"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.innovatrics.dot.samples"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
-        versionName = "4.42.0"
+        versionName = "4.43.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,15 +26,6 @@ android {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     lint {

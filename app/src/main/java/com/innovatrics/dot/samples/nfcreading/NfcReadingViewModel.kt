@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.innovatrics.dot.mrz.MachineReadableZone
-import com.innovatrics.dot.nfc.TravelDocument
+import com.innovatrics.dot.nfc.reader.NfcTravelDocumentReaderResult
 import com.innovatrics.dot.nfc.reader.ui.NfcTravelDocumentReaderFragment
 import kotlinx.coroutines.launch
 
 class NfcReadingViewModel(
     private val resolveAuthorityCertificatesFileUseCase: ResolveAuthorityCertificatesFileUseCase,
-    private val createNfcReadingResultUseCase: CreateNfcReadingResultUseCase,
+    private val createUiResultUseCase: CreateUiResultUseCase,
 ) : ViewModel() {
 
     private val mutableState: MutableLiveData<NfcReadingState> = MutableLiveData()
@@ -31,9 +31,9 @@ class NfcReadingViewModel(
         }
     }
 
-    fun setTravelDocument(travelDocument: TravelDocument) {
+    fun process(nfcTravelDocumentReaderResult: NfcTravelDocumentReaderResult) {
         viewModelScope.launch {
-            val result = createNfcReadingResultUseCase(travelDocument)
+            val result = createUiResultUseCase(nfcTravelDocumentReaderResult)
             mutableState.value = state.value!!.copy(result = result)
         }
     }

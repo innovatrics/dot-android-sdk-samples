@@ -42,6 +42,7 @@
 -keep class com.innovatrics.dot.nfc.lds.Lds1ElementaryFile { *; }
 -keep class com.innovatrics.dot.nfc.lds.Lds1eMrtdApplication { *; }
 -keep class com.innovatrics.dot.nfc.lds.LdsMasterFile { *; }
+-keep class com.innovatrics.dot.nfc.reader.NfcTravelDocumentReaderResult { *; }
 -keep class com.innovatrics.dot.nfc.AdditionalDocumentDetails { *; }
 -keep class com.innovatrics.dot.nfc.AdditionalPersonalDetails { *; }
 -keep class com.innovatrics.dot.nfc.DisplayedSignatureOrUsualMark { *; }
