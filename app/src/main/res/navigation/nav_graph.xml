@@ -40,7 +40,7 @@
         android:id="@+id/BasicDocumentAutoCaptureFragment"
         android:name="com.innovatrics.dot.samples.documentautocapture.BasicDocumentAutoCaptureFragment"
         android:label="@string/navigation_destination_document_auto_capture"
-        tools:layout="@layout/fragment_document_auto_capture">
+        tools:layout="@layout/dot_document_fragment_document_auto_capture">
 
         <action
             android:id="@+id/action_BasicDocumentAutoCaptureFragment_to_DocumentAutoCaptureResultFragment"
@@ -59,7 +59,7 @@
         android:id="@+id/PasswordCaptureFragment"
         android:name="com.innovatrics.dot.samples.nfcreading.PasswordCaptureFragment"
         android:label="@string/navigation_destination_nfc_reading"
-        tools:layout="@layout/fragment_document_auto_capture">
+        tools:layout="@layout/dot_document_fragment_document_auto_capture">
 
         <action
             android:id="@+id/action_PasswordCaptureFragment_to_NfcReadingFragment"
