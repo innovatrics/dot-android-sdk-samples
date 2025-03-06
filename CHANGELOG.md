@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.45.0 - 2025-03-06
+### Changed
+- Update DOT SDK to 8.7.2.
+
 ## 4.44.0 - 2025-03-06
 ### Changed
 - Update DOT SDK to 8.7.1.
