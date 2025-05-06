@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
@@ -73,10 +72,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
                     if (state.isInitialized) {
                         start()
                     }
-                    state.errorMessage?.let {
-                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                        dotSdkViewModel.notifyErrorMessageShown()
-                    }
                 }
             }
         }
@@ -89,10 +84,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
             mainViewModel.setProcessing(state.isProcessing)
             state.result?.let {
                 findNavController().navigate(R.id.action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment)
-            }
-            state.errorMessage?.let {
-                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                faceAutoCaptureViewModel.notifyErrorMessageShown()
             }
         }
     }

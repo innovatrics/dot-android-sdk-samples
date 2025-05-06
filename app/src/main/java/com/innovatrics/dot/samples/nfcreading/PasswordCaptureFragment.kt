@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureDetection
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
@@ -40,10 +39,6 @@ class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
                 dotSdkViewModel.state.collect { state ->
                     if (state.isInitialized) {
                         start()
-                    }
-                    state.errorMessage?.let {
-                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                        dotSdkViewModel.notifyErrorMessageShown()
                     }
                 }
             }

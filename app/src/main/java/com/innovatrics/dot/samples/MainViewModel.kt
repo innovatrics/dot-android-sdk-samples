@@ -14,10 +14,6 @@ class MainViewModel : ViewModel() {
     }
 
     fun notifyNoCameraPermission() {
-        mutableState.value = state.value!!.copy(errorMessage = "No camera permission.")
-    }
-
-    fun notifyErrorMessageShown() {
-        mutableState.value = state.value!!.copy(errorMessage = null)
+        throw IllegalStateException("No camera permission.")
     }
 }

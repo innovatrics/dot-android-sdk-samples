@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureDetection
 import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult
 import com.innovatrics.dot.palm.autocapture.ui.PalmAutoCaptureFragment
@@ -49,10 +48,6 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
                     if (state.isInitialized) {
                         start()
                     }
-                    state.errorMessage?.let {
-                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                        dotSdkViewModel.notifyErrorMessageShown()
-                    }
                 }
             }
         }
@@ -65,10 +60,6 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
             mainViewModel.setProcessing(state.isProcessing)
             state.result?.let {
                 findNavController().navigate(R.id.action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment)
-            }
-            state.errorMessage?.let {
-                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
-                palmAutoCaptureViewModel.notifyErrorMessageShown()
             }
         }
     }

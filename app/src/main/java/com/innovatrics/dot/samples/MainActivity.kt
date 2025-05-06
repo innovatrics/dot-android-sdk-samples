@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.progressindicator.CircularProgressIndicator
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -35,10 +34,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             when (state.isProcessing) {
                 true -> dimScreen()
                 false -> restoreScreen()
-            }
-            state.errorMessage?.let {
-                Snackbar.make(findViewById(android.R.id.content), it, Snackbar.LENGTH_SHORT).show()
-                mainViewModel.notifyErrorMessageShown()
             }
         }
     }

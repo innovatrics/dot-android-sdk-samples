@@ -26,18 +26,10 @@ class DotSdkViewModel(
     private suspend fun initializeDotSdkIfNeededInternal() {
         when (DotSdk.isInitialized()) {
             true -> mutableState.update { it.copy(isInitialized = true) }
-            false -> initializeDotSdkSafely()
+            false -> {
+                initializeDotSdkUseCase(getApplication())
+                mutableState.update { it.copy(isInitialized = true) }
+            }
         }
-    }
-
-    private suspend fun initializeDotSdkSafely() = try {
-        initializeDotSdkUseCase(getApplication())
-        mutableState.update { it.copy(isInitialized = true) }
-    } catch (e: Exception) {
-        mutableState.update { it.copy(errorMessage = e.message) }
-    }
-
-    fun notifyErrorMessageShown() {
-        mutableState.update { it.copy(errorMessage = null) }
     }
 }

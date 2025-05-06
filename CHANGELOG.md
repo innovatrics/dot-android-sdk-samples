@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.49.0 - 2025-05-06
+### Changed
+- Update DOT SDK to 8.11.0.
+- Simplified error reporting: removed Snackbar UI-based error handling to expose raw exceptions.
+
 ## 4.48.0 - 2025-04-03
 ### Changed
 - Update DOT SDK to 8.10.0.

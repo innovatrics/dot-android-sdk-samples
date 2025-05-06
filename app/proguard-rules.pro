@@ -6,6 +6,8 @@
 -keep class com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.face.commons.autocapture.DetectionPosition { *; }
 -keep class com.innovatrics.dot.face.detection.FaceDetector$Face { *; }
+-keep class com.innovatrics.dot.face.keypoints.FaceKeypoint { *; }
+-keep class com.innovatrics.dot.face.keypoints.FaceKeypoints { *; }
 -keep class com.innovatrics.dot.face.quality.Expression { *; }
 -keep class com.innovatrics.dot.face.quality.EyesExpression { *; }
 -keep class com.innovatrics.dot.face.quality.FaceAspects { *; }
