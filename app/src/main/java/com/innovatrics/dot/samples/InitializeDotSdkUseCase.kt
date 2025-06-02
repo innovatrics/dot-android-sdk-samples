@@ -33,28 +33,24 @@ class InitializeDotSdkUseCase(
         licenseBytes = readLicenseBytes(context.resources),
         libraries = listOf(
             DotDocumentLibrary(),
-            createDotFaceLibrary(),
+            DotFaceLibrary(
+                configuration = DotFaceLibraryConfiguration(
+                    modules = listOf(
+                        DotFaceDetectionFastModule(),
+                        DotFaceExpressionNeutralModule(),
+                    ),
+                ),
+            ),
             DotNfcLibrary(),
-            createDotPalmLibrary(),
+            DotPalmLibrary(
+                configuration = DotPalmLibraryConfiguration(
+                    modules = listOf(
+                        DotPalmDetectionModule(),
+                    ),
+                ),
+            ),
         ),
     )
 
     private fun readLicenseBytes(resources: Resources) = resources.openRawResource(R.raw.dot_license).use(InputStream::readBytes)
-
-    private fun createDotFaceLibrary() = DotFaceLibrary(
-        configuration = DotFaceLibraryConfiguration(
-            modules = listOf(
-                DotFaceDetectionFastModule.of(),
-                DotFaceExpressionNeutralModule.of(),
-            ),
-        ),
-    )
-
-    private fun createDotPalmLibrary() = DotPalmLibrary(
-        configuration = DotPalmLibraryConfiguration(
-            modules = listOf(
-                DotPalmDetectionModule(),
-            ),
-        ),
-    )
 }

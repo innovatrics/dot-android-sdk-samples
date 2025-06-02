@@ -7,12 +7,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.innovatrics.dot.samples.R
-import com.innovatrics.dot.samples.ui.createGson
+import com.innovatrics.dot.samples.ui.gson
 
 class FaceAutoCaptureResultFragment : Fragment(R.layout.fragment_face_auto_capture_result) {
 
     private val faceAutoCaptureViewModel: FaceAutoCaptureViewModel by activityViewModels()
-    private val gson = createGson()
 
     private lateinit var imageView: ImageView
     private lateinit var textView: TextView

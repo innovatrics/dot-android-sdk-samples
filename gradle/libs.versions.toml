@@ -1,12 +1,13 @@
 [versions]
 androidxConstraintlayout = "2.2.1"
 androidxNavigation = "2.9.0"
-comAndroid = "8.10.0"
+comAndroid = "8.10.1"
 orgJetbrainsKotlinAndroid = "1.9.24"
 orgJlleitschuhGradleKtlint = "12.1.1"
 comGithubTgo1014JP2ForAndroid = "1.0.4"
 comGoogleAndroidMaterial = "1.12.0"
-comInnovatricsDot = "8.11.1"
+comGoogleCodeGson = "2.13.1"
+comInnovatricsDot = "8.12.0"
 
 [libraries]
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
@@ -14,6 +15,7 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
 com-github-tgo1014-jp2ForAndroid = { group = "com.github.Tgo1014", name = "JP2ForAndroid", version.ref = "comGithubTgo1014JP2ForAndroid" }
 com-google-android-material = { group = "com.google.android.material", name = "material", version.ref = "comGoogleAndroidMaterial" }
+com-google-code-gson = { module = "com.google.code.gson:gson", version.ref = "comGoogleCodeGson" }
 com-innovatrics-dot-document = { group = "com.innovatrics.dot", name = "dot-document", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-face-detection-fast = { group = "com.innovatrics.dot", name = "dot-face-detection-fast", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-face-expression-neutral = { group = "com.innovatrics.dot", name = "dot-face-expression-neutral", version.ref = "comInnovatricsDot" }

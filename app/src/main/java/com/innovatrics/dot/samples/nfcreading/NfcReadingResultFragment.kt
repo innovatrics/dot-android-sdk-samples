@@ -7,12 +7,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.innovatrics.dot.samples.R
-import com.innovatrics.dot.samples.ui.createGson
+import com.innovatrics.dot.samples.ui.gson
 
 class NfcReadingResultFragment : Fragment(R.layout.fragment_nfc_reading_result) {
 
     private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels()
-    private val gson = createGson()
 
     private lateinit var imageView: ImageView
     private lateinit var textView: TextView

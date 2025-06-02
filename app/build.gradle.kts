@@ -17,7 +17,7 @@ android {
         minSdk = 21
         targetSdk = 35
         versionCode = 1
-        versionName = "4.50.0"
+        versionName = "4.51.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.com.github.tgo1014.jp2ForAndroid)
     implementation(libs.com.google.android.material)
+    implementation(libs.com.google.code.gson)
     implementation(libs.com.innovatrics.dot.document)
     implementation(libs.com.innovatrics.dot.face.detection.fast)
     implementation(libs.com.innovatrics.dot.face.expression.neutral)

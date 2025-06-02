@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.51.0 - 2025-06-02
+### Changed
+- Update DOT SDK to 8.12.0.
+- Update Android Gradle Plugin to 8.10.1.
+- Minor refactoring of DOT SDK initialization.
+- Replace `GsonFactory` to a `Gson` instance variable.
+
 ## 4.50.0 - 2025-05-21
 ### Changed
 - Update DOT SDK to 8.11.1.
