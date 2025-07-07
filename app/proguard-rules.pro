@@ -57,6 +57,7 @@
 -keep class com.innovatrics.dot.palm.detection.DetectionPosition { *; }
 -keep class com.innovatrics.dot.palm.detection.PalmDetector$Palm { *; }
 -keep class com.innovatrics.dot.palm.image.ImageParameters { *; }
+-keep class com.innovatrics.dot.palm.quality.PalmQuality { *; }
 -keep class com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.faceautocapture.FaceAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.nfcreading.NfcReadingResult { *; }
