@@ -5,7 +5,12 @@ import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class SmileLivenessResultFragment : Fragment(R.layout.fragment_smile_liveness_result) {
 
@@ -24,7 +29,13 @@ class SmileLivenessResultFragment : Fragment(R.layout.fragment_smile_liveness_re
     }
 
     private fun setupSmileLivenessViewModel() {
-        smileLivenessViewModel.state.observe(viewLifecycleOwner) { showResult(it.result!!) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                smileLivenessViewModel.state.collectLatest { state ->
+                    showResult(result = state.result!!)
+                }
+            }
+        }
     }
 
     private fun showResult(result: SmileLivenessResult) {

@@ -12,13 +12,12 @@ import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
-import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val documentAutoCaptureViewModel: DocumentAutoCaptureViewModel by activityViewModels { DocumentAutoCaptureViewModelFactory() }
 
@@ -26,10 +25,6 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDotSdkViewModel()
         setupDocumentAutoCaptureViewModel()
-    }
-
-    override fun provideConfiguration(): Configuration {
-        return Configuration()
     }
 
     private fun setupDotSdkViewModel() {
@@ -47,21 +42,29 @@ class BasicDocumentAutoCaptureFragment : DocumentAutoCaptureFragment() {
 
     private fun setupDocumentAutoCaptureViewModel() {
         documentAutoCaptureViewModel.initializeState()
-        documentAutoCaptureViewModel.state.observe(viewLifecycleOwner) { state ->
-            state.result?.let {
-                findNavController().navigate(R.id.action_BasicDocumentAutoCaptureFragment_to_DocumentAutoCaptureResultFragment)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                documentAutoCaptureViewModel.state.collectLatest { state ->
+                    state.result?.let {
+                        findNavController().navigate(R.id.action_BasicDocumentAutoCaptureFragment_to_DocumentAutoCaptureResultFragment)
+                    }
+                }
             }
         }
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     override fun onNoCameraPermission() {
-        mainViewModel.notifyNoCameraPermission()
+        throw IllegalStateException("No camera permission.")
+    }
+
+    override fun onProcessed(detection: DocumentAutoCaptureDetection) {
     }
 
     override fun onCaptured(result: DocumentAutoCaptureResult) {
         documentAutoCaptureViewModel.process(result)
-    }
-
-    override fun onProcessed(detection: DocumentAutoCaptureDetection) {
     }
 }

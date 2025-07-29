@@ -12,34 +12,20 @@ import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult
 import com.innovatrics.dot.palm.autocapture.ui.PalmAutoCaptureFragment
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
-import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val palmAutoCaptureViewModel: PalmAutoCaptureViewModel by activityViewModels { PalmAutoCaptureViewModelFactory() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupDotSdkViewModel()
         setupPalmAutoCaptureViewModel()
     }
-
-    override fun onNoCameraPermission() {
-        mainViewModel.notifyNoCameraPermission()
-    }
-
-    override fun onCaptured(result: PalmAutoCaptureResult) {
-        palmAutoCaptureViewModel.process(result)
-    }
-
-    override fun onProcessed(detection: PalmAutoCaptureDetection) {}
-
-    override fun provideConfiguration(): Configuration = Configuration()
 
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
@@ -56,11 +42,29 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
 
     private fun setupPalmAutoCaptureViewModel() {
         palmAutoCaptureViewModel.initializeState()
-        palmAutoCaptureViewModel.state.observe(viewLifecycleOwner) { state ->
-            mainViewModel.setProcessing(state.isProcessing)
-            state.result?.let {
-                findNavController().navigate(R.id.action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                palmAutoCaptureViewModel.state.collectLatest { state ->
+                    state.result?.let {
+                        findNavController().navigate(R.id.action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment)
+                    }
+                }
             }
         }
+    }
+
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
+    override fun onNoCameraPermission() {
+        throw IllegalStateException("No camera permission.")
+    }
+
+    override fun onProcessed(detection: PalmAutoCaptureDetection) {
+    }
+
+    override fun onCaptured(result: PalmAutoCaptureResult) {
+        palmAutoCaptureViewModel.process(result)
     }
 }

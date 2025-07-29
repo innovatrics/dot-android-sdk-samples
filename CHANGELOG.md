@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.55.0 - 2025-07-29
+### Changed
+- Update DOT SDK to 8.14.1.
+- Minor refactoring: `LiveData` replaced with `StateFlow`.
+
 ## 4.54.0 - 2025-07-07
 ### Changed
 - Update DOT SDK to 8.14.0.

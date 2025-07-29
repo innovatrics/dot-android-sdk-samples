@@ -6,8 +6,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.innovatrics.dot.samples.R
 import com.innovatrics.dot.samples.ui.gson
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class NfcReadingResultFragment : Fragment(R.layout.fragment_nfc_reading_result) {
 
@@ -28,7 +33,13 @@ class NfcReadingResultFragment : Fragment(R.layout.fragment_nfc_reading_result) 
     }
 
     private fun setupNfcReadingViewModel() {
-        nfcReadingViewModel.state.observe(viewLifecycleOwner) { showResult(it.result!!) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                nfcReadingViewModel.state.collectLatest { state ->
+                    showResult(result = state.result!!)
+                }
+            }
+        }
     }
 
     private fun showResult(result: NfcReadingResult) {

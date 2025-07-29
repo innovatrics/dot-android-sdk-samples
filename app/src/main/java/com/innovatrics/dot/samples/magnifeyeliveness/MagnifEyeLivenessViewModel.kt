@@ -1,20 +1,25 @@
 package com.innovatrics.dot.samples.magnifeyeliveness
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MagnifEyeLivenessViewModel(
     private val createUiResultUseCase: CreateUiResultUseCase,
 ) : ViewModel() {
 
-    private val mutableState: MutableLiveData<MagnifEyeLivenessState> = MutableLiveData()
-    val state: LiveData<MagnifEyeLivenessState> = mutableState
+    data class State(
+        val result: MagnifEyeLivenessResult? = null,
+    )
+
+    private val mutableState = MutableStateFlow(State())
+    val state = mutableState.asStateFlow()
 
     fun initializeState() {
-        mutableState.value = MagnifEyeLivenessState()
+        mutableState.update { it.copy(result = null) }
     }
 
     fun process(magnifEyeLivenessResult: com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult) {
@@ -22,7 +27,7 @@ class MagnifEyeLivenessViewModel(
         // See: https://developers.innovatrics.com/digital-onboarding/technical/remote/dot-dis/latest/documentation/#_magnifeye_liveness_check
         viewModelScope.launch {
             val result = createUiResultUseCase(magnifEyeLivenessResult)
-            mutableState.value = state.value!!.copy(result = result)
+            mutableState.update { it.copy(result = result) }
         }
     }
 }

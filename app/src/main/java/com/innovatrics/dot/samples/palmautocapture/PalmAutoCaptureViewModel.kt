@@ -1,28 +1,31 @@
 package com.innovatrics.dot.samples.palmautocapture
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class PalmAutoCaptureViewModel(
     private val createUiResultUseCase: CreateUiResultUseCase,
 ) : ViewModel() {
 
-    private val mutableState: MutableLiveData<PalmAutoCaptureState> = MutableLiveData()
-    val state: LiveData<PalmAutoCaptureState> = mutableState
+    data class State(
+        val result: PalmAutoCaptureResult? = null,
+    )
+
+    private val mutableState = MutableStateFlow(State())
+    val state = mutableState.asStateFlow()
 
     fun initializeState() {
-        mutableState.value = PalmAutoCaptureState()
+        mutableState.update { it.copy(result = null) }
     }
 
-    fun process(palmAutoCaptureResult: PalmAutoCaptureResult) {
+    fun process(palmAutoCaptureResult: com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult) {
         viewModelScope.launch {
-            mutableState.value = state.value!!.copy(isProcessing = true)
             val result = createUiResultUseCase(palmAutoCaptureResult)
-            mutableState.value = state.value!!.copy(isProcessing = false, result = result)
+            mutableState.update { it.copy(result = result) }
         }
     }
 }

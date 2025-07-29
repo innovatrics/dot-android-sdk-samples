@@ -1,12 +1,13 @@
 package com.innovatrics.dot.samples.nfcreading
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.innovatrics.dot.mrz.MachineReadableZone
 import com.innovatrics.dot.nfc.reader.NfcTravelDocumentReaderResult
 import com.innovatrics.dot.nfc.reader.ui.NfcTravelDocumentReaderFragment
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class NfcReadingViewModel(
@@ -14,37 +15,35 @@ class NfcReadingViewModel(
     private val createUiResultUseCase: CreateUiResultUseCase,
 ) : ViewModel() {
 
-    private val mutableState: MutableLiveData<NfcReadingState> = MutableLiveData()
-    val state: LiveData<NfcReadingState> = mutableState
+    data class State(
+        val configuration: NfcTravelDocumentReaderFragment.Configuration? = null,
+        val result: NfcReadingResult? = null,
+    )
+
+    private val mutableState = MutableStateFlow(State())
+    val state = mutableState.asStateFlow()
 
     fun initializeState() {
-        mutableState.value = NfcReadingState()
+        mutableState.update { it.copy(result = null) }
     }
 
     fun setupConfiguration(machineReadableZone: MachineReadableZone) {
         viewModelScope.launch {
-            val configuration = NfcTravelDocumentReaderFragment.Configuration(
-                password = createPassword(machineReadableZone),
-                authorityCertificatesFilePath = resolveAuthorityCertificatesFileUseCase().path,
-            )
-            mutableState.value = state.value!!.copy(configuration = configuration)
+            mutableState.update {
+                it.copy(
+                    configuration = NfcTravelDocumentReaderFragment.Configuration(
+                        password = createPassword(machineReadableZone),
+                        authorityCertificatesFilePath = resolveAuthorityCertificatesFileUseCase().path,
+                    ),
+                )
+            }
         }
     }
 
     fun process(nfcTravelDocumentReaderResult: NfcTravelDocumentReaderResult) {
         viewModelScope.launch {
             val result = createUiResultUseCase(nfcTravelDocumentReaderResult)
-            mutableState.value = state.value!!.copy(result = result)
+            mutableState.update { it.copy(result = result) }
         }
-    }
-
-    fun setError(exception: Exception) {
-        viewModelScope.launch {
-            mutableState.value = state.value!!.copy(errorMessage = exception.message ?: exception::class.java.name)
-        }
-    }
-
-    fun notifyErrorMessageShown() {
-        mutableState.value = state.value!!.copy(errorMessage = null)
     }
 }

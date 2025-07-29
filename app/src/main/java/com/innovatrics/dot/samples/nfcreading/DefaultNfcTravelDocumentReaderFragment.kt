@@ -8,15 +8,15 @@ class DefaultNfcTravelDocumentReaderFragment : NfcTravelDocumentReaderFragment()
 
     private val nfcReadingViewModel: NfcReadingViewModel by activityViewModels()
 
+    override fun provideConfiguration(): Configuration {
+        return nfcReadingViewModel.state.value.configuration!!
+    }
+
     override fun onSucceeded(result: NfcTravelDocumentReaderResult) {
         nfcReadingViewModel.process(result)
     }
 
     override fun onFailed(exception: Exception) {
-        nfcReadingViewModel.setError(exception)
-    }
-
-    override fun provideConfiguration(): Configuration {
-        return nfcReadingViewModel.state.value?.configuration!!
+        throw exception
     }
 }

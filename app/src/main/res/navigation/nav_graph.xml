@@ -79,11 +79,6 @@
             app:destination="@id/NfcReadingResultFragment"
             app:popUpTo="@id/HomeFragment" />
 
-        <action
-            android:id="@+id/action_NfcReadingFragment_to_NfcReadingErrorFragment"
-            app:destination="@id/NfcReadingErrorFragment"
-            app:popUpTo="@id/HomeFragment" />
-
     </fragment>
 
     <fragment
@@ -110,12 +105,6 @@
         android:name="com.innovatrics.dot.samples.nfcreading.NfcReadingResultFragment"
         android:label="@string/navigation_destination_nfc_reading"
         tools:layout="@layout/fragment_nfc_reading_result" />
-
-    <fragment
-        android:id="@+id/NfcReadingErrorFragment"
-        android:name="com.innovatrics.dot.samples.nfcreading.NfcReadingErrorFragment"
-        android:label="@string/navigation_destination_nfc_reading"
-        tools:layout="@layout/fragment_nfc_reading_error" />
 
     <fragment
         android:id="@+id/BasicFaceAutoCaptureFragment"

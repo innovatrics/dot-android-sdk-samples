@@ -12,13 +12,12 @@ import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessFragment
 import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
-import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val magnifEyeLivenessViewModel: MagnifEyeLivenessViewModel by activityViewModels { MagnifEyeLivenessViewModelFactory() }
 
@@ -26,10 +25,6 @@ class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDotSdkViewModel()
         setupMagnifEyeLivenessViewModel()
-    }
-
-    override fun provideConfiguration(): Configuration {
-        return Configuration()
     }
 
     private fun setupDotSdkViewModel() {
@@ -47,21 +42,29 @@ class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
 
     private fun setupMagnifEyeLivenessViewModel() {
         magnifEyeLivenessViewModel.initializeState()
-        magnifEyeLivenessViewModel.state.observe(viewLifecycleOwner) { state ->
-            state.result?.let {
-                findNavController().navigate(R.id.action_BasicMagnifEyeLivenessFragment_to_MagnifEyeLivenessResultFragment)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                magnifEyeLivenessViewModel.state.collectLatest { state ->
+                    state.result?.let {
+                        findNavController().navigate(R.id.action_BasicMagnifEyeLivenessFragment_to_MagnifEyeLivenessResultFragment)
+                    }
+                }
             }
         }
     }
 
-    override fun onFinished(result: MagnifEyeLivenessResult) {
-        magnifEyeLivenessViewModel.process(result)
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
     }
 
     override fun onNoCameraPermission() {
-        mainViewModel.notifyNoCameraPermission()
+        throw IllegalStateException("No camera permission.")
     }
 
     override fun onProcessed(detection: FaceAutoCaptureDetection) {
+    }
+
+    override fun onFinished(result: MagnifEyeLivenessResult) {
+        magnifEyeLivenessViewModel.process(result)
     }
 }

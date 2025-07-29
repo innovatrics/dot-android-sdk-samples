@@ -14,7 +14,11 @@ class DotSdkViewModel(
     private val initializeDotSdkUseCase: InitializeDotSdkUseCase,
 ) : AndroidViewModel(application) {
 
-    private val mutableState = MutableStateFlow(DotSdkState())
+    data class State(
+        val isInitialized: Boolean = false,
+    )
+
+    private val mutableState = MutableStateFlow(State())
     val state = mutableState.asStateFlow()
 
     fun initializeDotSdkIfNeeded() {
@@ -24,12 +28,9 @@ class DotSdkViewModel(
     }
 
     private suspend fun initializeDotSdkIfNeededInternal() {
-        when (DotSdk.isInitialized()) {
-            true -> mutableState.update { it.copy(isInitialized = true) }
-            false -> {
-                initializeDotSdkUseCase(getApplication())
-                mutableState.update { it.copy(isInitialized = true) }
-            }
+        if (DotSdk.isInitialized().not()) {
+            initializeDotSdkUseCase(context = getApplication())
         }
+        mutableState.update { it.copy(isInitialized = true) }
     }
 }

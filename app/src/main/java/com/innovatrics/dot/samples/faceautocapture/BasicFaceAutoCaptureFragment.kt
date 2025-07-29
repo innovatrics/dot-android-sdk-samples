@@ -19,13 +19,12 @@ import com.innovatrics.dot.face.quality.HeadPoseQuery
 import com.innovatrics.dot.face.quality.WearablesQuery
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
-import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val faceAutoCaptureViewModel: FaceAutoCaptureViewModel by activityViewModels { FaceAutoCaptureViewModelFactory() }
 
@@ -34,36 +33,6 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
         setupDotSdkViewModel()
         setupFaceAutoCaptureViewModel()
     }
-
-    override fun provideConfiguration() = Configuration(
-        query = FaceDetectionQuery(
-            faceQuality = FaceQualityQuery(
-                imageQuality = FaceImageQualityQuery(
-                    evaluateSharpness = true,
-                    evaluateBrightness = true,
-                    evaluateContrast = true,
-                    evaluateUniqueIntensityLevels = true,
-                    evaluateShadow = true,
-                    evaluateSpecularity = true,
-                ),
-                headPose = HeadPoseQuery(
-                    evaluateRoll = true,
-                    evaluateYaw = true,
-                    evaluatePitch = true,
-                ),
-                wearables = WearablesQuery(
-                    evaluateGlasses = true,
-                ),
-                expression = ExpressionQuery(
-                    eyes = EyesExpressionQuery(
-                        evaluateRightEye = true,
-                        evaluateLeftEye = true,
-                    ),
-                    evaluateMouth = true,
-                ),
-            ),
-        ),
-    )
 
     private fun setupDotSdkViewModel() {
         lifecycleScope.launch {
@@ -80,22 +49,57 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     private fun setupFaceAutoCaptureViewModel() {
         faceAutoCaptureViewModel.initializeState()
-        faceAutoCaptureViewModel.state.observe(viewLifecycleOwner) { state ->
-            mainViewModel.setProcessing(state.isProcessing)
-            state.result?.let {
-                findNavController().navigate(R.id.action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                faceAutoCaptureViewModel.state.collectLatest { state ->
+                    state.result?.let {
+                        findNavController().navigate(R.id.action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment)
+                    }
+                }
             }
         }
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration(
+            query = FaceDetectionQuery(
+                faceQuality = FaceQualityQuery(
+                    imageQuality = FaceImageQualityQuery(
+                        evaluateSharpness = true,
+                        evaluateBrightness = true,
+                        evaluateContrast = true,
+                        evaluateUniqueIntensityLevels = true,
+                        evaluateShadow = true,
+                        evaluateSpecularity = true,
+                    ),
+                    headPose = HeadPoseQuery(
+                        evaluateRoll = true,
+                        evaluateYaw = true,
+                        evaluatePitch = true,
+                    ),
+                    wearables = WearablesQuery(
+                        evaluateGlasses = true,
+                    ),
+                    expression = ExpressionQuery(
+                        eyes = EyesExpressionQuery(
+                            evaluateRightEye = true,
+                            evaluateLeftEye = true,
+                        ),
+                        evaluateMouth = true,
+                    ),
+                ),
+            ),
+        )
+    }
+
     override fun onNoCameraPermission() {
-        mainViewModel.notifyNoCameraPermission()
+        throw IllegalStateException("No camera permission.")
+    }
+
+    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 
     override fun onCaptured(result: FaceAutoCaptureResult) {
         faceAutoCaptureViewModel.process(result)
-    }
-
-    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 }

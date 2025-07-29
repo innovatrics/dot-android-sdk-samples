@@ -12,13 +12,12 @@ import com.innovatrics.dot.face.liveness.smile.SmileLivenessFragment
 import com.innovatrics.dot.face.liveness.smile.SmileLivenessResult
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
-import com.innovatrics.dot.samples.MainViewModel
 import com.innovatrics.dot.samples.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BasicSmileLivenessFragment : SmileLivenessFragment() {
 
-    private val mainViewModel: MainViewModel by activityViewModels()
     private val dotSdkViewModel: DotSdkViewModel by activityViewModels { DotSdkViewModelFactory(requireActivity().application) }
     private val smileLivenessViewModel: SmileLivenessViewModel by activityViewModels { SmileLivenessViewModelFactory() }
 
@@ -26,10 +25,6 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupDotSdkViewModel()
         setupSmileLivenessViewModel()
-    }
-
-    override fun provideConfiguration(): Configuration {
-        return Configuration()
     }
 
     private fun setupDotSdkViewModel() {
@@ -47,15 +42,23 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
 
     private fun setupSmileLivenessViewModel() {
         smileLivenessViewModel.initializeState()
-        smileLivenessViewModel.state.observe(viewLifecycleOwner) { state ->
-            state.result?.let {
-                findNavController().navigate(R.id.action_BasicSmileLivenessFragment_to_SmileLivenessResultFragment)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                smileLivenessViewModel.state.collectLatest { state ->
+                    state.result?.let {
+                        findNavController().navigate(R.id.action_BasicSmileLivenessFragment_to_SmileLivenessResultFragment)
+                    }
+                }
             }
         }
     }
 
+    override fun provideConfiguration(): Configuration {
+        return Configuration()
+    }
+
     override fun onNoCameraPermission() {
-        mainViewModel.notifyNoCameraPermission()
+        throw IllegalStateException("No camera permission.")
     }
 
     override fun onCriticalFacePresenceLost() {
