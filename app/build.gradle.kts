@@ -14,10 +14,10 @@ android {
 
     defaultConfig {
         applicationId = "com.innovatrics.dot.samples"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "4.56.0"
+        versionName = "4.57.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

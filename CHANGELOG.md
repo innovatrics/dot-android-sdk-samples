@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.57.0 - 2025-08-25
+### Changed
+- Update DOT SDK to 8.15.0.
+- Update minSdk to 24.
+
 ## 4.56.0 - 2025-08-15
 ### Changed
 - Update DOT SDK to 8.14.2.
