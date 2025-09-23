@@ -1,13 +1,13 @@
 [versions]
 androidxConstraintlayout = "2.2.1"
-androidxNavigation = "2.9.3"
-comAndroid = "8.12.0"
+androidxNavigation = "2.9.4"
+comAndroid = "8.13.0"
 orgJetbrainsKotlinAndroid = "1.9.24"
-orgJlleitschuhGradleKtlint = "13.0.0"
+orgJlleitschuhGradleKtlint = "13.1.0"
 comGithubTgo1014JP2ForAndroid = "1.0.4"
-comGoogleAndroidMaterial = "1.12.0"
-comGoogleCodeGson = "2.13.1"
-comInnovatricsDot = "8.15.0"
+comGoogleAndroidMaterial = "1.13.0"
+comGoogleCodeGson = "2.13.2"
+comInnovatricsDot = "8.15.1"
 
 [libraries]
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
