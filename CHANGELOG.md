@@ -2,7 +2,7 @@
 
 ## 4.59.0 - 2025-10-16
 ### Added
-- New sample: Palm Auto Capture.
+- New sample: Multi-Range Liveness.
 
 ### Changed
 - Update DOT SDK to 8.16.0.
