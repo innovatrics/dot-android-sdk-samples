@@ -34,6 +34,10 @@
             android:id="@+id/action_HomeFragment_to_BasicPalmAutoCaptureFragment"
             app:destination="@id/BasicPalmAutoCaptureFragment" />
 
+        <action
+            android:id="@+id/action_HomeFragment_to_BasicMultiRangeLivenessFragment"
+            app:destination="@id/BasicMultiRangeLivenessFragment" />
+
     </fragment>
 
     <fragment
@@ -162,5 +166,24 @@
         android:name="com.innovatrics.dot.samples.magnifeyeliveness.MagnifEyeLivenessResultFragment"
         android:label="@string/navigation_destination_magnifeye_liveness"
         tools:layout="@layout/fragment_magnifeye_liveness_result" />
+
+    <fragment
+        android:id="@+id/BasicMultiRangeLivenessFragment"
+        android:name="com.innovatrics.dot.samples.multirangeliveness.BasicMultirangeLivenessFragment"
+        android:label="@string/navigation_destination_multirange_liveness"
+        tools:layout="@layout/dot_face_fragment_multirange_liveness">
+
+        <action
+            android:id="@+id/action_BasicMultiRangeLivenessFragment_to_MultiRangeLivenessResultFragment"
+            app:destination="@id/MultiRangeLivenessResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MultiRangeLivenessResultFragment"
+        android:name="com.innovatrics.dot.samples.multirangeliveness.MultiRangeLivenessResultFragment"
+        android:label="@string/navigation_destination_multirange_liveness"
+        tools:layout="@layout/fragment_multirange_liveness_result" />
 
 </navigation>

@@ -16,9 +16,6 @@ dependencyResolutionManagement {
         maven {
             url = URI("https://maven.innovatrics.com/releases")
         }
-        maven {
-            url = URI("https://jitpack.io")
-        }
     }
 }
 rootProject.name = "dot-android-sdk-samples"

@@ -17,7 +17,7 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "4.58.0"
+        versionName = "4.59.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,7 +48,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.com.github.tgo1014.jp2ForAndroid)
     implementation(libs.com.google.android.material)
     implementation(libs.com.google.code.gson)
     implementation(libs.com.innovatrics.dot.document)
@@ -56,6 +55,7 @@ dependencies {
     implementation(libs.com.innovatrics.dot.face.expression.neutral)
     implementation(libs.com.innovatrics.dot.nfc)
     implementation(libs.com.innovatrics.dot.palm.detection)
+    implementation(libs.dev.keiji.jp2.android)
 }
 
 ktlint {

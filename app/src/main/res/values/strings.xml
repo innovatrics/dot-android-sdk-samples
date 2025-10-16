@@ -7,6 +7,7 @@
     <string name="navigation_destination_nfc_reading">NFC Reading</string>
     <string name="navigation_destination_palm_auto_capture">Palm Auto Capture</string>
     <string name="navigation_destination_smile_liveness">Smile Liveness</string>
+    <string name="navigation_destination_multirange_liveness">MultiRange Liveness</string>
     <string name="sample_document_auto_capture_title">Document Auto Capture</string>
     <string name="sample_document_auto_capture_description">Basic component sample.</string>
     <string name="sample_face_auto_capture_title">Face Auto Capture</string>
@@ -22,5 +23,8 @@
     <string name="sample_smile_liveness_title">Smile Liveness</string>
     <string name="sample_smile_liveness_description">Basic component sample.</string>
     <string name="sample_smile_liveness_summary">Use the Digital Identity Service in order to evaluate the smile liveness score. See: https://developers.innovatrics.com/digital-onboarding/technical/remote/dot-dis/latest/documentation/#_smile_liveness_check</string>
+    <string name="sample_multirange_liveness_title">MultiRange Liveness</string>
+    <string name="sample_multirange_liveness_description">Basic component sample.</string>
+    <string name="sample_multirange_liveness_summary">Use the Digital Identity Service in order to evaluate the MultiRange Liveness score. See: https://developers.innovatrics.com/digital-onboarding/technical/remote/dot-dis/latest/documentation</string>
     <string name="sample_start">Start</string>
 </resources>

@@ -13,6 +13,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var faceAutoCaptureStartButton: Button
     private lateinit var smileLivenessStartButton: Button
     private lateinit var magnifEyeLivenessStartButton: Button
+    private lateinit var multiRangeLivenessStartButton: Button
     private lateinit var palmAutoCaptureStartButton: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,6 +25,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupSmileLivenessStartButton()
         setupMagnifEyeLivenessStartButton()
         setupPalmAutoCaptureStartButton()
+        setupMultiRangeLivenessStartButton()
     }
 
     private fun setViews(view: View) {
@@ -33,6 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
         magnifEyeLivenessStartButton = view.findViewById(R.id.magnifeye_liveness_start)
         palmAutoCaptureStartButton = view.findViewById(R.id.palm_auto_capture_start)
+        multiRangeLivenessStartButton = view.findViewById(R.id.multirange_liveness_start)
     }
 
     private fun setupDocumentAutoCaptureStartButton() {
@@ -68,6 +71,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupPalmAutoCaptureStartButton() {
         palmAutoCaptureStartButton.setOnClickListener {
             findNavController().navigate(R.id.action_HomeFragment_to_BasicPalmAutoCaptureFragment)
+        }
+    }
+
+    private fun setupMultiRangeLivenessStartButton() {
+        multiRangeLivenessStartButton.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_BasicMultiRangeLivenessFragment)
         }
     }
 }
