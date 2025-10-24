@@ -6,7 +6,7 @@ orgJetbrainsKotlinAndroid = "1.9.24"
 orgJlleitschuhGradleKtlint = "13.1.0"
 comGoogleAndroidMaterial = "1.13.0"
 comGoogleCodeGson = "2.13.2"
-comInnovatricsDot = "8.16.1"
+comInnovatricsDot = "8.16.2"
 devKeijiJp2Android = "1.0.5"
 
 [libraries]
