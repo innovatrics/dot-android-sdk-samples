@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.63.0 - 2025-11-10
+### Changed
+- Update DOT SDK to 8.16.4.
+- Update Kotlin to 2.2.20.
+
 ## 4.62.0 - 2025-11-05
 ### Changed
 - Update DOT SDK to 8.16.3.
