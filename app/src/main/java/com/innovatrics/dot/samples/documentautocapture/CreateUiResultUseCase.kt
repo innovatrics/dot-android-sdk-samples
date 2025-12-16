@@ -13,7 +13,7 @@ class CreateUiResultUseCase(
 
     suspend operator fun invoke(sdkDocumentAutoCaptureResult: SdkDocumentAutoCaptureResult): DocumentAutoCaptureResult = withContext(ioDispatcher) {
         DocumentAutoCaptureResult(
-            bitmap = BitmapFactory.create(sdkDocumentAutoCaptureResult.bgraRawImage),
+            bitmap = BitmapFactory.create(sdkDocumentAutoCaptureResult.image),
             documentAutoCaptureResult = sdkDocumentAutoCaptureResult,
         )
     }

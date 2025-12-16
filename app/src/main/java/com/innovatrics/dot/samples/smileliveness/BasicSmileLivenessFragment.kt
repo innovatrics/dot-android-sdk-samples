@@ -7,9 +7,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
-import com.innovatrics.dot.face.liveness.smile.SmileLivenessFragment
 import com.innovatrics.dot.face.liveness.smile.SmileLivenessResult
+import com.innovatrics.dot.face.liveness.smile.ui.SmileLivenessFragment
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.R
@@ -62,9 +61,6 @@ class BasicSmileLivenessFragment : SmileLivenessFragment() {
     }
 
     override fun onCriticalFacePresenceLost() {
-    }
-
-    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 
     override fun onFinished(result: SmileLivenessResult) {

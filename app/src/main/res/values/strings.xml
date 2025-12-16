@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DOT SDK Samples</string>
+    <string name="navigation_destination_custom_ui_face_auto_capture">Custom UI Face Auto Capture</string>
     <string name="navigation_destination_document_auto_capture">Document Auto Capture</string>
     <string name="navigation_destination_face_auto_capture">Face Auto Capture</string>
     <string name="navigation_destination_home">Home</string>
@@ -8,6 +9,10 @@
     <string name="navigation_destination_palm_auto_capture">Palm Auto Capture</string>
     <string name="navigation_destination_smile_liveness">Smile Liveness</string>
     <string name="navigation_destination_multirange_liveness">MultiRange Liveness</string>
+    <string name="sample_custom_ui_face_auto_capture_description">Base Face Auto Capture component with custom UI.</string>
+    <string name="sample_custom_ui_face_auto_capture_phase_candidate_selection">Candidate Selection</string>
+    <string name="sample_custom_ui_face_auto_capture_phase_pre_candidate_selection">Pre-Candidate Selection</string>
+    <string name="sample_custom_ui_face_auto_capture_title">Custom UI Face Auto Capture</string>
     <string name="sample_document_auto_capture_title">Document Auto Capture</string>
     <string name="sample_document_auto_capture_description">Basic component sample.</string>
     <string name="sample_face_auto_capture_title">Face Auto Capture</string>

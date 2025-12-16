@@ -13,7 +13,7 @@ class CreateUiResultUseCase(
 
     suspend operator fun invoke(sdkMagnifEyeLivenessResult: SdkMagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(dispatcher) {
         MagnifEyeLivenessResult(
-            bitmap = BitmapFactory.create(sdkMagnifEyeLivenessResult.bgrRawImage),
+            bitmap = BitmapFactory.create(sdkMagnifEyeLivenessResult.image),
         )
     }
 }

@@ -11,6 +11,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var documentAutoCaptureStartButton: Button
     private lateinit var nfcReadingStartButton: Button
     private lateinit var faceAutoCaptureStartButton: Button
+    private lateinit var customUiFaceAutoCaptureStartButton: Button
     private lateinit var smileLivenessStartButton: Button
     private lateinit var magnifEyeLivenessStartButton: Button
     private lateinit var multiRangeLivenessStartButton: Button
@@ -22,6 +23,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupDocumentAutoCaptureStartButton()
         setupNfcReadingStartButton()
         setupFaceAutoCaptureStartButton()
+        setupCustomUiFaceAutoCaptureStartButton()
         setupSmileLivenessStartButton()
         setupMagnifEyeLivenessStartButton()
         setupPalmAutoCaptureStartButton()
@@ -32,6 +34,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         documentAutoCaptureStartButton = view.findViewById(R.id.document_auto_capture_start)
         nfcReadingStartButton = view.findViewById(R.id.nfc_reading_start)
         faceAutoCaptureStartButton = view.findViewById(R.id.face_auto_capture_start)
+        customUiFaceAutoCaptureStartButton = view.findViewById(R.id.custom_ui_face_auto_capture_start)
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
         magnifEyeLivenessStartButton = view.findViewById(R.id.magnifeye_liveness_start)
         palmAutoCaptureStartButton = view.findViewById(R.id.palm_auto_capture_start)
@@ -53,6 +56,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupFaceAutoCaptureStartButton() {
         faceAutoCaptureStartButton.setOnClickListener {
             findNavController().navigate(R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment)
+        }
+    }
+
+    private fun setupCustomUiFaceAutoCaptureStartButton() {
+        customUiFaceAutoCaptureStartButton.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_CustomUiFaceAutoCaptureFragment)
         }
     }
 

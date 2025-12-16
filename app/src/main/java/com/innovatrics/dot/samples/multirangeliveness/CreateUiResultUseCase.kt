@@ -13,7 +13,7 @@ class CreateUiResultUseCase(
 
     suspend operator fun invoke(sdkMultiRangeLivenessResult: SdkMultiRangeLivenessResult): MultiRangeLivenessResult = withContext(ioDispatcher) {
         MultiRangeLivenessResult(
-            bitmap = BitmapFactory.create(sdkMultiRangeLivenessResult.bgrRawImage),
+            bitmap = BitmapFactory.create(sdkMultiRangeLivenessResult.image),
         )
     }
 }

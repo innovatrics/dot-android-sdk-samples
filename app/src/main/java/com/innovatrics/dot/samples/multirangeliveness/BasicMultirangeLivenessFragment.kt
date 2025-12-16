@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
 import com.innovatrics.dot.face.commons.liveness.multirange.MultiRangeLivenessChallengeItem
 import com.innovatrics.dot.face.liveness.multirange.MultiRangeLivenessResult
 import com.innovatrics.dot.face.liveness.multirange.ui.MultiRangeLivenessFragment
@@ -56,9 +55,6 @@ class BasicMultirangeLivenessFragment : MultiRangeLivenessFragment() {
 
     override fun onFinished(result: MultiRangeLivenessResult) {
         multiRangeLivenessViewModel.process(result)
-    }
-
-    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 
     override fun provideConfiguration(): Configuration {

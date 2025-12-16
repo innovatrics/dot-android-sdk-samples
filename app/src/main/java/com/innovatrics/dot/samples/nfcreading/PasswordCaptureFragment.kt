@@ -7,10 +7,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureDetection
-import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureFragment
 import com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
 import com.innovatrics.dot.document.autocapture.MrzValidation
+import com.innovatrics.dot.document.autocapture.ui.BaseDocumentAutoCaptureFragment.Configuration
+import com.innovatrics.dot.document.autocapture.ui.DocumentAutoCaptureFragment
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.R
@@ -56,7 +56,9 @@ class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
 
     override fun provideConfiguration(): Configuration {
         return Configuration(
-            mrzValidation = MrzValidation.VALIDATE_ALWAYS,
+            base = Configuration(
+                mrzValidation = MrzValidation.REQUIRE_PRESENCE_AND_VALIDITY,
+            ),
         )
     }
 
@@ -64,10 +66,7 @@ class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
         throw IllegalStateException("No camera permission.")
     }
 
-    override fun onProcessed(detection: DocumentAutoCaptureDetection) {
-    }
-
-    override fun onCaptured(result: DocumentAutoCaptureResult) {
+    override fun onFinished(result: DocumentAutoCaptureResult) {
         nfcReadingViewModel.setupConfiguration(result.machineReadableZone!!)
     }
 }

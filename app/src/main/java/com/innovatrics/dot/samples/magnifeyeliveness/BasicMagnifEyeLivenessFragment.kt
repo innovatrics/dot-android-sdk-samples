@@ -7,9 +7,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
-import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessFragment
 import com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult
+import com.innovatrics.dot.face.liveness.magnifeye.ui.MagnifEyeLivenessFragment
 import com.innovatrics.dot.samples.DotSdkViewModel
 import com.innovatrics.dot.samples.DotSdkViewModelFactory
 import com.innovatrics.dot.samples.R
@@ -59,9 +58,6 @@ class BasicMagnifEyeLivenessFragment : MagnifEyeLivenessFragment() {
 
     override fun onNoCameraPermission() {
         throw IllegalStateException("No camera permission.")
-    }
-
-    override fun onProcessed(detection: FaceAutoCaptureDetection) {
     }
 
     override fun onFinished(result: MagnifEyeLivenessResult) {

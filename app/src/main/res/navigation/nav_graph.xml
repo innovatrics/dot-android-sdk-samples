@@ -23,6 +23,10 @@
             app:destination="@id/BasicFaceAutoCaptureFragment" />
 
         <action
+            android:id="@+id/action_HomeFragment_to_CustomUiFaceAutoCaptureFragment"
+            app:destination="@id/CustomUiFaceAutoCaptureFragment" />
+
+        <action
             android:id="@+id/action_HomeFragment_to_BasicSmileLivenessFragment"
             app:destination="@id/BasicSmileLivenessFragment" />
 
@@ -118,6 +122,19 @@
 
         <action
             android:id="@+id/action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment"
+            app:destination="@id/FaceAutoCaptureResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CustomUiFaceAutoCaptureFragment"
+        android:name="com.innovatrics.dot.samples.faceautocapture.customui.CustomUiFaceAutoCaptureFragment"
+        android:label="@string/navigation_destination_custom_ui_face_auto_capture"
+        tools:layout="@layout/fragment_custom_ui_face_auto_capture">
+
+        <action
+            android:id="@+id/action_CustomUiFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment"
             app:destination="@id/FaceAutoCaptureResultFragment"
             app:popUpTo="@id/HomeFragment" />
 

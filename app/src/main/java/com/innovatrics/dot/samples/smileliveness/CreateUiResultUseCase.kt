@@ -13,7 +13,7 @@ class CreateUiResultUseCase(
 
     suspend operator fun invoke(sdkSmileLivenessResult: SdkSmileLivenessResult): SmileLivenessResult = withContext(ioDispatcher) {
         SmileLivenessResult(
-            bitmap = BitmapFactory.create(sdkSmileLivenessResult.bgrRawImage),
+            bitmap = BitmapFactory.create(sdkSmileLivenessResult.image),
         )
     }
 }

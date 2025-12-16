@@ -7,9 +7,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureDetection
-import com.innovatrics.dot.face.autocapture.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
+import com.innovatrics.dot.face.autocapture.ui.BaseFaceAutoCaptureFragment
+import com.innovatrics.dot.face.autocapture.ui.FaceAutoCaptureFragment
 import com.innovatrics.dot.face.detection.FaceDetectionQuery
 import com.innovatrics.dot.face.quality.ExpressionQuery
 import com.innovatrics.dot.face.quality.EyesExpressionQuery
@@ -62,30 +62,34 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
 
     override fun provideConfiguration(): Configuration {
         return Configuration(
-            query = FaceDetectionQuery(
-                faceQuality = FaceQualityQuery(
-                    imageQuality = FaceImageQualityQuery(
-                        evaluateSharpness = true,
-                        evaluateBrightness = true,
-                        evaluateContrast = true,
-                        evaluateUniqueIntensityLevels = true,
-                        evaluateShadow = true,
-                        evaluateSpecularity = true,
-                    ),
-                    headPose = HeadPoseQuery(
-                        evaluateRoll = true,
-                        evaluateYaw = true,
-                        evaluatePitch = true,
-                    ),
-                    wearables = WearablesQuery(
-                        evaluateGlasses = true,
-                    ),
-                    expression = ExpressionQuery(
-                        eyes = EyesExpressionQuery(
-                            evaluateRightEye = true,
-                            evaluateLeftEye = true,
+            base = Configuration(
+                faceLibraryComponent = BaseFaceAutoCaptureFragment.Configuration().faceLibraryComponent.copy(
+                    query = FaceDetectionQuery(
+                        faceQuality = FaceQualityQuery(
+                            imageQuality = FaceImageQualityQuery(
+                                evaluateSharpness = true,
+                                evaluateBrightness = true,
+                                evaluateContrast = true,
+                                evaluateUniqueIntensityLevels = true,
+                                evaluateShadow = true,
+                                evaluateSpecularity = true,
+                            ),
+                            headPose = HeadPoseQuery(
+                                evaluateRoll = true,
+                                evaluateYaw = true,
+                                evaluatePitch = true,
+                            ),
+                            wearables = WearablesQuery(
+                                evaluateGlasses = true,
+                            ),
+                            expression = ExpressionQuery(
+                                eyes = EyesExpressionQuery(
+                                    evaluateRightEye = true,
+                                    evaluateLeftEye = true,
+                                ),
+                                evaluateMouth = true,
+                            ),
                         ),
-                        evaluateMouth = true,
                     ),
                 ),
             ),
@@ -96,10 +100,7 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
         throw IllegalStateException("No camera permission.")
     }
 
-    override fun onProcessed(detection: FaceAutoCaptureDetection) {
-    }
-
-    override fun onCaptured(result: FaceAutoCaptureResult) {
+    override fun onFinished(result: FaceAutoCaptureResult) {
         faceAutoCaptureViewModel.process(result)
     }
 }

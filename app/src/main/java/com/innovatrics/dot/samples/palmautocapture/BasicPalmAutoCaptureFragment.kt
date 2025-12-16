@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureDetection
 import com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult
 import com.innovatrics.dot.palm.autocapture.ui.PalmAutoCaptureFragment
 import com.innovatrics.dot.samples.DotSdkViewModel
@@ -61,10 +60,7 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
         throw IllegalStateException("No camera permission.")
     }
 
-    override fun onProcessed(detection: PalmAutoCaptureDetection) {
-    }
-
-    override fun onCaptured(result: PalmAutoCaptureResult) {
+    override fun onFinished(result: PalmAutoCaptureResult) {
         palmAutoCaptureViewModel.process(result)
     }
 }

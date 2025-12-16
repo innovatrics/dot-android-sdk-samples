@@ -3,16 +3,13 @@ package com.innovatrics.dot.samples
 import android.content.Context
 import android.content.res.Resources
 import com.innovatrics.dot.core.DotSdk
-import com.innovatrics.dot.core.DotSdkConfiguration
-import com.innovatrics.dot.document.DotDocumentLibrary
-import com.innovatrics.dot.face.DotFaceLibrary
-import com.innovatrics.dot.face.DotFaceLibraryConfiguration
-import com.innovatrics.dot.face.detection.fast.DotFaceDetectionFastModule
-import com.innovatrics.dot.face.expressionneutral.DotFaceExpressionNeutralModule
-import com.innovatrics.dot.nfc.DotNfcLibrary
-import com.innovatrics.dot.palm.DotPalmLibrary
-import com.innovatrics.dot.palm.DotPalmLibraryConfiguration
-import com.innovatrics.dot.palm.detection.DotPalmDetectionModule
+import com.innovatrics.dot.core.library.DotDocumentLibraryConfiguration
+import com.innovatrics.dot.core.library.DotFaceLibraryConfiguration
+import com.innovatrics.dot.core.library.DotNfcLibraryConfiguration
+import com.innovatrics.dot.core.library.DotPalmLibraryConfiguration
+import com.innovatrics.dot.core.library.Libraries
+import com.innovatrics.dot.core.library.face.DotFaceDetectionModuleConfiguration
+import com.innovatrics.dot.core.library.face.DotFaceExpressionNeutralModuleConfiguration
 import java.io.InputStream
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -28,27 +25,19 @@ class InitializeDotSdkUseCase(
         dotSdk.initialize(configuration)
     }
 
-    private fun createDotSdkConfiguration(context: Context) = DotSdkConfiguration(
+    private fun createDotSdkConfiguration(context: Context) = DotSdk.Configuration(
         context = context,
         licenseBytes = readLicenseBytes(context.resources),
-        libraries = listOf(
-            DotDocumentLibrary(),
-            DotFaceLibrary(
-                configuration = DotFaceLibraryConfiguration(
-                    modules = listOf(
-                        DotFaceDetectionFastModule(),
-                        DotFaceExpressionNeutralModule(),
-                    ),
+        libraries = Libraries(
+            document = DotDocumentLibraryConfiguration,
+            face = DotFaceLibraryConfiguration(
+                modules = DotFaceLibraryConfiguration.Modules(
+                    detection = DotFaceDetectionModuleConfiguration.Fast,
+                    expressionNeutral = DotFaceExpressionNeutralModuleConfiguration,
                 ),
             ),
-            DotNfcLibrary(),
-            DotPalmLibrary(
-                configuration = DotPalmLibraryConfiguration(
-                    modules = listOf(
-                        DotPalmDetectionModule(),
-                    ),
-                ),
-            ),
+            nfc = DotNfcLibraryConfiguration,
+            palm = DotPalmLibraryConfiguration(),
         ),
     )
 

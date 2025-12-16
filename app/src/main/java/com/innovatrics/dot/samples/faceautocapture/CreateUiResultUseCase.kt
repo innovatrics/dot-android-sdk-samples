@@ -13,7 +13,7 @@ class CreateUiResultUseCase(
 
     suspend operator fun invoke(sdkFaceAutoCaptureResult: SdkFaceAutoCaptureResult): FaceAutoCaptureResult = withContext(ioDispatcher) {
         FaceAutoCaptureResult(
-            bitmap = BitmapFactory.create(sdkFaceAutoCaptureResult.bgrRawImage),
+            bitmap = BitmapFactory.create(sdkFaceAutoCaptureResult.image),
             faceAutoCaptureResult = sdkFaceAutoCaptureResult,
         )
     }
