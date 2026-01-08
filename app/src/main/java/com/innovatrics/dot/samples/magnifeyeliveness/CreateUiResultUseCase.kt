@@ -8,10 +8,10 @@ import kotlinx.coroutines.withContext
 typealias SdkMagnifEyeLivenessResult = com.innovatrics.dot.face.liveness.magnifeye.MagnifEyeLivenessResult
 
 class CreateUiResultUseCase(
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
-    suspend operator fun invoke(sdkMagnifEyeLivenessResult: SdkMagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(dispatcher) {
+    suspend operator fun invoke(sdkMagnifEyeLivenessResult: SdkMagnifEyeLivenessResult): MagnifEyeLivenessResult = withContext(context = defaultDispatcher) {
         MagnifEyeLivenessResult(
             bitmap = BitmapFactory.create(sdkMagnifEyeLivenessResult.image),
         )

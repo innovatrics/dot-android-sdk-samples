@@ -27,9 +27,9 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
     }
 
     private fun setupDotSdkViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dotSdkViewModel.state.collect { state ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collectLatest { state ->
                     if (state.isInitialized) {
                         start()
                     }
@@ -42,10 +42,10 @@ class BasicPalmAutoCaptureFragment : PalmAutoCaptureFragment() {
     private fun setupPalmAutoCaptureViewModel() {
         palmAutoCaptureViewModel.initializeState()
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 palmAutoCaptureViewModel.state.collectLatest { state ->
                     state.result?.let {
-                        findNavController().navigate(R.id.action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment)
+                        findNavController().navigate(resId = R.id.action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment)
                     }
                 }
             }

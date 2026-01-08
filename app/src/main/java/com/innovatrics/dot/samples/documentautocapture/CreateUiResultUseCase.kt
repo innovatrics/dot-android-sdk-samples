@@ -8,10 +8,10 @@ import kotlinx.coroutines.withContext
 typealias SdkDocumentAutoCaptureResult = com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult
 
 class CreateUiResultUseCase(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
-    suspend operator fun invoke(sdkDocumentAutoCaptureResult: SdkDocumentAutoCaptureResult): DocumentAutoCaptureResult = withContext(ioDispatcher) {
+    suspend operator fun invoke(sdkDocumentAutoCaptureResult: SdkDocumentAutoCaptureResult): DocumentAutoCaptureResult = withContext(context = defaultDispatcher) {
         DocumentAutoCaptureResult(
             bitmap = BitmapFactory.create(sdkDocumentAutoCaptureResult.image),
             documentAutoCaptureResult = sdkDocumentAutoCaptureResult,

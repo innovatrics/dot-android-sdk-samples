@@ -26,8 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupCustomUiFaceAutoCaptureStartButton()
         setupSmileLivenessStartButton()
         setupMagnifEyeLivenessStartButton()
-        setupPalmAutoCaptureStartButton()
         setupMultiRangeLivenessStartButton()
+        setupPalmAutoCaptureStartButton()
     }
 
     private fun setViews(view: View) {
@@ -37,55 +37,55 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         customUiFaceAutoCaptureStartButton = view.findViewById(R.id.custom_ui_face_auto_capture_start)
         smileLivenessStartButton = view.findViewById(R.id.smile_liveness_start)
         magnifEyeLivenessStartButton = view.findViewById(R.id.magnifeye_liveness_start)
-        palmAutoCaptureStartButton = view.findViewById(R.id.palm_auto_capture_start)
         multiRangeLivenessStartButton = view.findViewById(R.id.multirange_liveness_start)
+        palmAutoCaptureStartButton = view.findViewById(R.id.palm_auto_capture_start)
     }
 
     private fun setupDocumentAutoCaptureStartButton() {
         documentAutoCaptureStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicDocumentAutoCaptureFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicDocumentAutoCaptureFragment)
         }
     }
 
     private fun setupNfcReadingStartButton() {
         nfcReadingStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_PasswordCaptureFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_PasswordCaptureFragment)
         }
     }
 
     private fun setupFaceAutoCaptureStartButton() {
         faceAutoCaptureStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicFaceAutoCaptureFragment)
         }
     }
 
     private fun setupCustomUiFaceAutoCaptureStartButton() {
         customUiFaceAutoCaptureStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_CustomUiFaceAutoCaptureFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_CustomUiFaceAutoCaptureFragment)
         }
     }
 
     private fun setupSmileLivenessStartButton() {
         smileLivenessStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicSmileLivenessFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicSmileLivenessFragment)
         }
     }
 
     private fun setupMagnifEyeLivenessStartButton() {
         magnifEyeLivenessStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment)
-        }
-    }
-
-    private fun setupPalmAutoCaptureStartButton() {
-        palmAutoCaptureStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicPalmAutoCaptureFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicMagnifEyeLivenessFragment)
         }
     }
 
     private fun setupMultiRangeLivenessStartButton() {
         multiRangeLivenessStartButton.setOnClickListener {
-            findNavController().navigate(R.id.action_HomeFragment_to_BasicMultiRangeLivenessFragment)
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicMultiRangeLivenessFragment)
+        }
+    }
+
+    private fun setupPalmAutoCaptureStartButton() {
+        palmAutoCaptureStartButton.setOnClickListener {
+            findNavController().navigate(resId = R.id.action_HomeFragment_to_BasicPalmAutoCaptureFragment)
         }
     }
 }

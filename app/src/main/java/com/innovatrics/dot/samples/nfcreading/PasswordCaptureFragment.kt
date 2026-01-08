@@ -29,9 +29,9 @@ class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
     }
 
     private fun setupDotSdkViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dotSdkViewModel.state.collect { state ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collectLatest { state ->
                     if (state.isInitialized) {
                         start()
                     }
@@ -44,10 +44,10 @@ class PasswordCaptureFragment : DocumentAutoCaptureFragment() {
     private fun setupNfcReadingViewModel() {
         nfcReadingViewModel.initializeState()
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 nfcReadingViewModel.state.collectLatest { state ->
                     state.configuration?.let {
-                        findNavController().navigate(R.id.action_PasswordCaptureFragment_to_NfcReadingFragment)
+                        findNavController().navigate(resId = R.id.action_PasswordCaptureFragment_to_NfcReadingFragment)
                     }
                 }
             }

@@ -35,12 +35,12 @@
             app:destination="@id/BasicMagnifEyeLivenessFragment" />
 
         <action
-            android:id="@+id/action_HomeFragment_to_BasicPalmAutoCaptureFragment"
-            app:destination="@id/BasicPalmAutoCaptureFragment" />
-
-        <action
             android:id="@+id/action_HomeFragment_to_BasicMultiRangeLivenessFragment"
             app:destination="@id/BasicMultiRangeLivenessFragment" />
+
+        <action
+            android:id="@+id/action_HomeFragment_to_BasicPalmAutoCaptureFragment"
+            app:destination="@id/BasicPalmAutoCaptureFragment" />
 
     </fragment>
 
@@ -88,25 +88,6 @@
             app:popUpTo="@id/HomeFragment" />
 
     </fragment>
-
-    <fragment
-        android:id="@+id/BasicPalmAutoCaptureFragment"
-        android:name="com.innovatrics.dot.samples.palmautocapture.BasicPalmAutoCaptureFragment"
-        android:label="@string/navigation_destination_palm_auto_capture"
-        tools:layout="@layout/dot_palm_fragment_palm_auto_capture">
-
-        <action
-            android:id="@+id/action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment"
-            app:destination="@id/PalmAutoCaptureResultFragment"
-            app:popUpTo="@id/HomeFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/PalmAutoCaptureResultFragment"
-        android:name="com.innovatrics.dot.samples.palmautocapture.PalmAutoCaptureResultFragment"
-        android:label="@string/navigation_destination_palm_auto_capture"
-        tools:layout="@layout/fragment_palm_auto_capture_result" />
 
     <fragment
         android:id="@+id/NfcReadingResultFragment"
@@ -202,5 +183,24 @@
         android:name="com.innovatrics.dot.samples.multirangeliveness.MultiRangeLivenessResultFragment"
         android:label="@string/navigation_destination_multirange_liveness"
         tools:layout="@layout/fragment_multirange_liveness_result" />
+
+    <fragment
+        android:id="@+id/BasicPalmAutoCaptureFragment"
+        android:name="com.innovatrics.dot.samples.palmautocapture.BasicPalmAutoCaptureFragment"
+        android:label="@string/navigation_destination_palm_auto_capture"
+        tools:layout="@layout/dot_palm_fragment_palm_auto_capture">
+
+        <action
+            android:id="@+id/action_BasicPalmAutoCaptureFragment_to_PalmAutoCaptureResultFragment"
+            app:destination="@id/PalmAutoCaptureResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/PalmAutoCaptureResultFragment"
+        android:name="com.innovatrics.dot.samples.palmautocapture.PalmAutoCaptureResultFragment"
+        android:label="@string/navigation_destination_palm_auto_capture"
+        tools:layout="@layout/fragment_palm_auto_capture_result" />
 
 </navigation>

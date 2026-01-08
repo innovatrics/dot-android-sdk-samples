@@ -34,7 +34,7 @@ class PalmAutoCaptureResultFragment : Fragment(R.layout.fragment_palm_auto_captu
 
     private fun setupPalmAutoCaptureViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 palmAutoCaptureViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

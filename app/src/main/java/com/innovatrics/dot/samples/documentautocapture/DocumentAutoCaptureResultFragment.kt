@@ -34,7 +34,7 @@ class DocumentAutoCaptureResultFragment : Fragment(R.layout.fragment_document_au
 
     private fun setupDocumentAutoCaptureViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 documentAutoCaptureViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

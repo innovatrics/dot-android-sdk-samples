@@ -30,7 +30,7 @@ class MagnifEyeLivenessResultFragment : Fragment(R.layout.fragment_magnifeye_liv
 
     private fun setupMagnifEyeLivenessViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 magnifEyeLivenessViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

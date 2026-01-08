@@ -30,7 +30,7 @@ class MultiRangeLivenessResultFragment : Fragment(R.layout.fragment_multirange_l
 
     private fun setupMultiRangeLivenessViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 multiRangeLivenessViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

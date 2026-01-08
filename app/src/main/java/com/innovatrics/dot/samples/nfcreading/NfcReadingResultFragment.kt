@@ -34,7 +34,7 @@ class NfcReadingResultFragment : Fragment(R.layout.fragment_nfc_reading_result) 
 
     private fun setupNfcReadingViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 nfcReadingViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

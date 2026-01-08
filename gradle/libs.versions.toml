@@ -1,12 +1,12 @@
 [versions]
 androidxConstraintlayout = "2.2.1"
 androidxNavigation = "2.9.6"
-comAndroid = "8.13.1"
+comAndroid = "8.13.2"
 comGoogleAndroidMaterial = "1.13.0"
 comGoogleCodeGson = "2.13.2"
-comInnovatricsDot = "9.0.0"
+comInnovatricsDot = "9.0.1"
 devKeijiJp2Android = "1.0.5"
-orgJetbrainsKotlinAndroid = "2.2.21"
+orgJetbrainsKotlinAndroid = "2.3.0"
 orgJlleitschuhGradleKtlint = "14.0.1"
 
 [libraries]

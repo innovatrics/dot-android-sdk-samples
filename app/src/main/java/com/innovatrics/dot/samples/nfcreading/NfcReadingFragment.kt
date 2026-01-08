@@ -48,10 +48,10 @@ class NfcReadingFragment : Fragment(R.layout.fragment_nfc_reading) {
 
     private fun setupNfcReadingViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 nfcReadingViewModel.state.collectLatest { state ->
                     state.result?.let {
-                        findNavController().navigate(R.id.action_NfcReadingFragment_to_NfcReadingResultFragment)
+                        findNavController().navigate(resId = R.id.action_NfcReadingFragment_to_NfcReadingResultFragment)
                     }
                 }
             }

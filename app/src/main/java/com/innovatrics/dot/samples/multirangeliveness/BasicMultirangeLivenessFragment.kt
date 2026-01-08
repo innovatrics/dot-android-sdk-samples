@@ -28,9 +28,9 @@ class BasicMultirangeLivenessFragment : MultiRangeLivenessFragment() {
     }
 
     private fun setupDotSdkViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dotSdkViewModel.state.collect { state ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collectLatest { state ->
                     if (state.isInitialized) {
                         start()
                     }
@@ -43,10 +43,10 @@ class BasicMultirangeLivenessFragment : MultiRangeLivenessFragment() {
     private fun setupMultiRangeLivenessViewModel() {
         multiRangeLivenessViewModel.initializeState()
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 multiRangeLivenessViewModel.state.collectLatest { state ->
                     state.result?.let {
-                        findNavController().navigate(R.id.action_BasicMultiRangeLivenessFragment_to_MultiRangeLivenessResultFragment)
+                        findNavController().navigate(resId = R.id.action_BasicMultiRangeLivenessFragment_to_MultiRangeLivenessResultFragment)
                     }
                 }
             }

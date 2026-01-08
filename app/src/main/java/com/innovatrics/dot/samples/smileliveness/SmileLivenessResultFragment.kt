@@ -30,7 +30,7 @@ class SmileLivenessResultFragment : Fragment(R.layout.fragment_smile_liveness_re
 
     private fun setupSmileLivenessViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 smileLivenessViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

@@ -8,10 +8,10 @@ import kotlinx.coroutines.withContext
 typealias SdkSmileLivenessResult = com.innovatrics.dot.face.liveness.smile.SmileLivenessResult
 
 class CreateUiResultUseCase(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
-    suspend operator fun invoke(sdkSmileLivenessResult: SdkSmileLivenessResult): SmileLivenessResult = withContext(ioDispatcher) {
+    suspend operator fun invoke(sdkSmileLivenessResult: SdkSmileLivenessResult): SmileLivenessResult = withContext(context = defaultDispatcher) {
         SmileLivenessResult(
             bitmap = BitmapFactory.create(sdkSmileLivenessResult.image),
         )

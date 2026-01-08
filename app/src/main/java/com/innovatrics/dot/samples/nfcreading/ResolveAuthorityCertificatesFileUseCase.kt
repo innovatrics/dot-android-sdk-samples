@@ -16,7 +16,7 @@ class ResolveAuthorityCertificatesFileUseCase(
 
     private val filename = "authority_certificates.pem"
 
-    suspend operator fun invoke() = withContext(ioDispatcher) {
+    suspend operator fun invoke() = withContext(context = ioDispatcher) {
         resolveAuthorityCertificatesFile()
     }
 

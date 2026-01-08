@@ -34,7 +34,7 @@ class FaceAutoCaptureResultFragment : Fragment(R.layout.fragment_face_auto_captu
 
     private fun setupFaceAutoCaptureViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 faceAutoCaptureViewModel.state.collectLatest { state ->
                     showResult(result = state.result!!)
                 }

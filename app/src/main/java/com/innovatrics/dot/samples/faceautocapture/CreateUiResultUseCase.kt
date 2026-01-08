@@ -8,10 +8,10 @@ import kotlinx.coroutines.withContext
 typealias SdkFaceAutoCaptureResult = com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult
 
 class CreateUiResultUseCase(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
-    suspend operator fun invoke(sdkFaceAutoCaptureResult: SdkFaceAutoCaptureResult): FaceAutoCaptureResult = withContext(ioDispatcher) {
+    suspend operator fun invoke(sdkFaceAutoCaptureResult: SdkFaceAutoCaptureResult): FaceAutoCaptureResult = withContext(context = defaultDispatcher) {
         FaceAutoCaptureResult(
             bitmap = BitmapFactory.create(sdkFaceAutoCaptureResult.image),
             faceAutoCaptureResult = sdkFaceAutoCaptureResult,

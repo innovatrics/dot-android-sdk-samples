@@ -41,7 +41,7 @@ class CustomUiFaceAutoCaptureFragment : BaseFaceAutoCaptureFragment(contentLayou
     private fun setupDotSdkViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
-                dotSdkViewModel.state.collect { state ->
+                dotSdkViewModel.state.collectLatest { state ->
                     if (state.isInitialized) {
                         start()
                     }

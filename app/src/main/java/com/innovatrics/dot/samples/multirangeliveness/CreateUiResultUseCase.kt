@@ -8,10 +8,10 @@ import kotlinx.coroutines.withContext
 typealias SdkMultiRangeLivenessResult = com.innovatrics.dot.face.liveness.multirange.MultiRangeLivenessResult
 
 class CreateUiResultUseCase(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
-    suspend operator fun invoke(sdkMultiRangeLivenessResult: SdkMultiRangeLivenessResult): MultiRangeLivenessResult = withContext(ioDispatcher) {
+    suspend operator fun invoke(sdkMultiRangeLivenessResult: SdkMultiRangeLivenessResult): MultiRangeLivenessResult = withContext(context = defaultDispatcher) {
         MultiRangeLivenessResult(
             bitmap = BitmapFactory.create(sdkMultiRangeLivenessResult.image),
         )

@@ -17,15 +17,16 @@ import kotlinx.coroutines.withContext
 
 class InitializeDotSdkUseCase(
     private val dotSdk: DotSdk = DotSdk,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 
-    suspend operator fun invoke(context: Context) = withContext(dispatcher) {
+    suspend operator fun invoke(context: Context) = withContext(context = defaultDispatcher) {
         val configuration = createDotSdkConfiguration(context)
         dotSdk.initialize(configuration)
     }
 
-    private fun createDotSdkConfiguration(context: Context) = DotSdk.Configuration(
+    private suspend fun createDotSdkConfiguration(context: Context) = DotSdk.Configuration(
         context = context,
         licenseBytes = readLicenseBytes(context.resources),
         libraries = Libraries(
@@ -41,5 +42,7 @@ class InitializeDotSdkUseCase(
         ),
     )
 
-    private fun readLicenseBytes(resources: Resources) = resources.openRawResource(R.raw.dot_license).use(InputStream::readBytes)
+    private suspend fun readLicenseBytes(resources: Resources): ByteArray = withContext(context = ioDispatcher) {
+        resources.openRawResource(R.raw.dot_license).use(InputStream::readBytes)
+    }
 }

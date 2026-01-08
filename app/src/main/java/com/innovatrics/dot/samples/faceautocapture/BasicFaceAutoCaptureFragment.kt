@@ -35,9 +35,9 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
     }
 
     private fun setupDotSdkViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dotSdkViewModel.state.collect { state ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                dotSdkViewModel.state.collectLatest { state ->
                     if (state.isInitialized) {
                         start()
                     }
@@ -50,10 +50,10 @@ class BasicFaceAutoCaptureFragment : FaceAutoCaptureFragment() {
     private fun setupFaceAutoCaptureViewModel() {
         faceAutoCaptureViewModel.initializeState()
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
                 faceAutoCaptureViewModel.state.collectLatest { state ->
                     state.result?.let {
-                        findNavController().navigate(R.id.action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment)
+                        findNavController().navigate(resId = R.id.action_BasicFaceAutoCaptureFragment_to_FaceAutoCaptureResultFragment)
                     }
                 }
             }

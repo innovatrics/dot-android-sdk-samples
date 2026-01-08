@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.66.0 - 2026-01-08
+### Changed
+- Update DOT SDK to 9.0.1.
+
 ## 4.65.0 - 2025-12-16
 ### Added
 - Sample of customized face auto capture component.
