@@ -1,10 +1,11 @@
 -keep class com.innovatrics.dot.core.geometry.PointDouble { *; }
--keep class com.innovatrics.dot.document.autocapture.DetectionPosition { *; }
 -keep class com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult { *; }
+-keep class com.innovatrics.dot.document.detection.DetectionPosition { *; }
 -keep class com.innovatrics.dot.document.detection.DocumentDetector$Document { *; }
--keep class com.innovatrics.dot.document.image.ImageParameters { *; }
+-keep class com.innovatrics.dot.document.quality.DocumentImageQuality { *; }
+-keep class com.innovatrics.dot.document.quality.DocumentQuality { *; }
 -keep class com.innovatrics.dot.face.autocapture.FaceAutoCaptureResult { *; }
--keep class com.innovatrics.dot.face.commons.autocapture.DetectionPosition { *; }
+-keep class com.innovatrics.dot.face.commons.detection.DetectionPosition { *; }
 -keep class com.innovatrics.dot.face.detection.FaceDetector$Face { *; }
 -keep class com.innovatrics.dot.face.keypoints.FaceKeypoint { *; }
 -keep class com.innovatrics.dot.face.keypoints.FaceKeypoints { *; }
@@ -18,8 +19,6 @@
 -keep class com.innovatrics.dot.face.quality.HeadPose { *; }
 -keep class com.innovatrics.dot.face.quality.HeadPoseAttribute { *; }
 -keep class com.innovatrics.dot.face.quality.Wearables { *; }
--keep class com.innovatrics.dot.image.BgraRawImage { *; }
--keep class com.innovatrics.dot.image.BgrRawImage { *; }
 -keep class com.innovatrics.dot.image.Image { *; }
 -keep enum com.innovatrics.dot.image.ImageFormat { *; }
 -keep class com.innovatrics.dot.image.ImageSize { *; }
@@ -56,7 +55,7 @@
 -keep class com.innovatrics.dot.palm.autocapture.PalmAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.palm.detection.DetectionPosition { *; }
 -keep class com.innovatrics.dot.palm.detection.PalmDetector$Palm { *; }
--keep class com.innovatrics.dot.palm.image.ImageParameters { *; }
+-keep class com.innovatrics.dot.palm.quality.PalmImageQuality { *; }
 -keep class com.innovatrics.dot.palm.quality.PalmQuality { *; }
 -keep class com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.faceautocapture.FaceAutoCaptureResult { *; }
