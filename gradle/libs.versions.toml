@@ -1,12 +1,11 @@
 [versions]
 androidxConstraintlayout = "2.2.1"
 androidxNavigation = "2.9.6"
-comAndroid = "8.13.2"
+comAndroid = "9.0.0"
 comGoogleAndroidMaterial = "1.13.0"
 comGoogleCodeGson = "2.13.2"
-comInnovatricsDot = "9.0.2"
+comInnovatricsDot = "9.1.0"
 devKeijiJp2Android = "1.0.5"
-orgJetbrainsKotlinAndroid = "2.3.0"
 orgJlleitschuhGradleKtlint = "14.0.1"
 
 [libraries]
@@ -24,5 +23,4 @@ dev-keiji-jp2-android = { group = "dev.keiji.jp2", name = "jp2-android", version
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "comAndroid" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "orgJetbrainsKotlinAndroid" }
 org-jlleitschuh-gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "orgJlleitschuhGradleKtlint" }

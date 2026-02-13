@@ -1,24 +1,28 @@
 plugins {
     alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.org.jlleitschuh.gradle.ktlint)
 }
 
 kotlin {
-    jvmToolchain(jdkVersion = 17)
+    jvmToolchain(jdkVersion = 21)
 }
 
 android {
     namespace = "com.innovatrics.dot.samples"
-    compileSdk = 35
+    compileSdk {
+        version = release(version = 36)
+    }
 
     defaultConfig {
         applicationId = "com.innovatrics.dot.samples"
-        minSdk = 24
-        targetSdk = 35
+        minSdk {
+            version = release(version = 24)
+        }
+        targetSdk {
+            version = release(version = 36)
+        }
         versionCode = 1
-        versionName = "4.67.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        versionName = "4.68.0"
     }
 
     buildTypes {

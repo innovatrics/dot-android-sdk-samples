@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.68.0 - 2026-02-12
+### Changed
+- Update DOT SDK to 9.0.3.
+- Update Android Gradle Plugin to 9.0.0.
+- Update `jvmToolchain` to 21.
+- Update `compileSdk` and `targetSdk` to 36.
+
 ## 4.67.0 - 2026-01-22
 ### Changed
 - Update DOT SDK to 9.0.2.
