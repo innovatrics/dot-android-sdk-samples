@@ -30,14 +30,14 @@ class InitializeDotSdkUseCase(
         context = context,
         licenseBytes = readLicenseBytes(context.resources),
         libraries = Libraries(
-            document = DotDocumentLibraryConfiguration,
+            document = DotDocumentLibraryConfiguration(),
             face = DotFaceLibraryConfiguration(
                 modules = DotFaceLibraryConfiguration.Modules(
                     detection = DotFaceDetectionModuleConfiguration.Fast,
                     expressionNeutral = DotFaceExpressionNeutralModuleConfiguration,
                 ),
             ),
-            nfc = DotNfcLibraryConfiguration,
+            nfc = DotNfcLibraryConfiguration(),
             palm = DotPalmLibraryConfiguration(),
         ),
     )
