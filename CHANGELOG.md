@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.71.0 - 2026-04-01
+### Changed
+- Update DOT SDK to 9.2.2.
+
 ## 4.70.0 - 2026-03-20
 ### Changed
 - Update DOT SDK to 9.2.1.
