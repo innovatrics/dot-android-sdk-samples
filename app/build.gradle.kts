@@ -22,7 +22,7 @@ android {
             version = release(version = 36)
         }
         versionCode = 1
-        versionName = "4.75.0"
+        versionName = "4.76.0"
     }
 
     buildTypes {
