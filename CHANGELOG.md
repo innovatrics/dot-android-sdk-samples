@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.77.0 - 2026-06-30
+### Added
+- New sample: Fingers Auto Capture with transformation.
+
+### Changed
+- Renamed project to IDV Android SDK Samples.
+- Update DOT SDK to 9.5.0.
+
 ## 4.76.0 - 2026-06-05
 ### Changed
 - Update DOT SDK to 9.4.2.

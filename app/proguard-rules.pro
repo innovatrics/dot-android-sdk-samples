@@ -1,3 +1,6 @@
+-keep class com.innovatrics.dot.camera.Camera { *; }
+-keep class com.innovatrics.dot.camera.Camera$Frame { *; }
+-keep class com.innovatrics.dot.camera.Camera$Sensor { *; }
 -keep class com.innovatrics.dot.core.geometry.PointDouble { *; }
 -keep class com.innovatrics.dot.document.autocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.document.detection.DetectionPosition { *; }
@@ -19,9 +22,17 @@
 -keep class com.innovatrics.dot.face.quality.HeadPose { *; }
 -keep class com.innovatrics.dot.face.quality.HeadPoseAttribute { *; }
 -keep class com.innovatrics.dot.face.quality.Wearables { *; }
+-keep class com.innovatrics.dot.fingers.autocapture.FingerBundle { *; }
+-keep class com.innovatrics.dot.fingers.autocapture.FingerBundles { *; }
+-keep class com.innovatrics.dot.fingers.autocapture.FingersAutoCaptureResult { *; }
+-keep class com.innovatrics.dot.fingers.detection.DetectionPosition { *; }
+-keep class com.innovatrics.dot.fingers.detection.FingerDetector$Finger { *; }
+-keep class com.innovatrics.dot.fingers.quality.FingersImageQuality { *; }
+-keep class com.innovatrics.dot.fingers.quality.FingersQuality { *; }
 -keep class com.innovatrics.dot.image.Image { *; }
 -keep enum com.innovatrics.dot.image.ImageFormat { *; }
 -keep class com.innovatrics.dot.image.ImageSize { *; }
+-keep class com.innovatrics.dot.image.ImageSizeDouble { *; }
 -keep class com.innovatrics.dot.mrz.CheckDigit { *; }
 -keep class com.innovatrics.dot.mrz.Date { *; }
 -keep class com.innovatrics.dot.mrz.MachineReadableZone { *; }
@@ -59,5 +70,6 @@
 -keep class com.innovatrics.dot.palm.quality.PalmQuality { *; }
 -keep class com.innovatrics.dot.samples.documentautocapture.DocumentAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.faceautocapture.FaceAutoCaptureResult { *; }
+-keep class com.innovatrics.dot.samples.fingersautocapture.FingersAutoCaptureResult { *; }
 -keep class com.innovatrics.dot.samples.nfcreading.NfcReadingResult { *; }
 -keep class com.innovatrics.dot.samples.palmautocapture.PalmAutoCaptureResult { *; }

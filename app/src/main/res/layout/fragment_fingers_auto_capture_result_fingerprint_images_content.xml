@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_fingers_auto_capture_finger_index"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <ImageView
+        android:id="@+id/index_fingerprint_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_fingers_auto_capture_finger_middle"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <ImageView
+        android:id="@+id/middle_fingerprint_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_fingers_auto_capture_finger_ring"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <ImageView
+        android:id="@+id/ring_fingerprint_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_fingers_auto_capture_finger_little"
+        android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+    <ImageView
+        android:id="@+id/little_fingerprint_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars" />
+
+</LinearLayout>

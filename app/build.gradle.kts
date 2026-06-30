@@ -22,7 +22,7 @@ android {
             version = release(version = 36)
         }
         versionCode = 1
-        versionName = "4.76.0"
+        versionName = "4.77.0"
     }
 
     buildTypes {
@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.com.innovatrics.dot.document)
     implementation(libs.com.innovatrics.dot.face.detection.fast)
     implementation(libs.com.innovatrics.dot.face.expression.neutral)
+    implementation(libs.com.innovatrics.dot.fingers.detection)
+    implementation(libs.com.innovatrics.dot.fingers.transformation)
     implementation(libs.com.innovatrics.dot.nfc)
     implementation(libs.com.innovatrics.dot.palm.detection)
     implementation(libs.dev.keiji.jp2.android)

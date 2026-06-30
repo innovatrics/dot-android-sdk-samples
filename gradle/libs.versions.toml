@@ -4,7 +4,7 @@ androidxNavigation = "2.9.8"
 comAndroid = "9.2.1"
 comGoogleAndroidMaterial = "1.14.0"
 comGoogleCodeGson = "2.14.0"
-comInnovatricsDot = "9.4.2"
+comInnovatricsDot = "9.5.0"
 devKeijiJp2Android = "1.0.5"
 orgJlleitschuhGradleKtlint = "14.2.0"
 
@@ -17,6 +17,8 @@ com-google-code-gson = { module = "com.google.code.gson:gson", version.ref = "co
 com-innovatrics-dot-document = { group = "com.innovatrics.dot", name = "dot-document", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-face-detection-fast = { group = "com.innovatrics.dot", name = "dot-face-detection-fast", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-face-expression-neutral = { group = "com.innovatrics.dot", name = "dot-face-expression-neutral", version.ref = "comInnovatricsDot" }
+com-innovatrics-dot-fingers-detection = { group = "com.innovatrics.dot", name = "dot-fingers-detection", version.ref = "comInnovatricsDot" }
+com-innovatrics-dot-fingers-transformation = { group = "com.innovatrics.dot", name = "dot-fingers-transformation", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-nfc = { group = "com.innovatrics.dot", name = "dot-nfc", version.ref = "comInnovatricsDot" }
 com-innovatrics-dot-palm-detection = { group = "com.innovatrics.dot", name = "dot-palm-detection", version.ref = "comInnovatricsDot" }
 dev-keiji-jp2-android = { group = "dev.keiji.jp2", name = "jp2-android", version.ref = "devKeijiJp2Android" }

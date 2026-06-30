@@ -42,6 +42,10 @@
             android:id="@+id/action_HomeFragment_to_BasicPalmAutoCaptureFragment"
             app:destination="@id/BasicPalmAutoCaptureFragment" />
 
+        <action
+            android:id="@+id/action_HomeFragment_to_BasicFingersAutoCaptureFragment"
+            app:destination="@id/BasicFingersAutoCaptureFragment" />
+
     </fragment>
 
     <fragment
@@ -202,5 +206,24 @@
         android:name="com.innovatrics.dot.samples.palmautocapture.PalmAutoCaptureResultFragment"
         android:label="@string/navigation_destination_palm_auto_capture"
         tools:layout="@layout/fragment_palm_auto_capture_result" />
+
+    <fragment
+        android:id="@+id/BasicFingersAutoCaptureFragment"
+        android:name="com.innovatrics.dot.samples.fingersautocapture.BasicFingersAutoCaptureFragment"
+        android:label="@string/navigation_destination_fingers_auto_capture"
+        tools:layout="@layout/dot_fingers_fragment_fingers_auto_capture">
+
+        <action
+            android:id="@+id/action_BasicFingersAutoCaptureFragment_to_FingersAutoCaptureResultFragment"
+            app:destination="@id/FingersAutoCaptureResultFragment"
+            app:popUpTo="@id/HomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FingersAutoCaptureResultFragment"
+        android:name="com.innovatrics.dot.samples.fingersautocapture.FingersAutoCaptureResultFragment"
+        android:label="@string/navigation_destination_fingers_auto_capture"
+        tools:layout="@layout/fragment_fingers_auto_capture_result" />
 
 </navigation>

@@ -5,11 +5,14 @@ import android.content.res.Resources
 import com.innovatrics.dot.core.DotSdk
 import com.innovatrics.dot.core.library.DotDocumentLibraryConfiguration
 import com.innovatrics.dot.core.library.DotFaceLibraryConfiguration
+import com.innovatrics.dot.core.library.DotFingersLibraryConfiguration
 import com.innovatrics.dot.core.library.DotNfcLibraryConfiguration
 import com.innovatrics.dot.core.library.DotPalmLibraryConfiguration
 import com.innovatrics.dot.core.library.Libraries
 import com.innovatrics.dot.core.library.face.DotFaceDetectionModuleConfiguration
 import com.innovatrics.dot.core.library.face.DotFaceExpressionNeutralModuleConfiguration
+import com.innovatrics.dot.core.library.fingers.DotFingersDetectionModuleConfiguration
+import com.innovatrics.dot.core.library.fingers.DotFingersTransformationModuleConfiguration
 import java.io.InputStream
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -35,6 +38,12 @@ class InitializeDotSdkUseCase(
                 modules = DotFaceLibraryConfiguration.Modules(
                     detection = DotFaceDetectionModuleConfiguration.Fast,
                     expressionNeutral = DotFaceExpressionNeutralModuleConfiguration,
+                ),
+            ),
+            fingers = DotFingersLibraryConfiguration(
+                modules = DotFingersLibraryConfiguration.Modules(
+                    detection = DotFingersDetectionModuleConfiguration,
+                    transformation = DotFingersTransformationModuleConfiguration,
                 ),
             ),
             nfc = DotNfcLibraryConfiguration(),
