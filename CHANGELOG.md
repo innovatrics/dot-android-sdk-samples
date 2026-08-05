@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.78.0 - 2026-08-5
+### Changed
+- Update DOT SDK to 9.6.0.
+
 ## 4.77.0 - 2026-06-30
 ### Added
 - New sample: Fingers Auto Capture with transformation.

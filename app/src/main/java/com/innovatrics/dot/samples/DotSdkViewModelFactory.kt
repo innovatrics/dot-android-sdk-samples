@@ -10,6 +10,6 @@ class DotSdkViewModelFactory(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return DotSdkViewModel(application, InitializeDotSdkUseCase()) as T
+        return DotSdkViewModel(application) as T
     }
 }

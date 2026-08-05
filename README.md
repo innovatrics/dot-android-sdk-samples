@@ -9,17 +9,17 @@ A collection of quickstart samples demonstrating the IDV Android SDK. [Read more
 
 ## Samples
 
-| Sample                                       | Description                                                                                                              |
-|:---------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|
-| **Document Auto Capture**                    | Basic component sample.                                                                                                  |
-| **NFC Reading**                              | Combination of Document Auto Capture component with enabled MRZ recognition and UI NFC Travel Document Reader component. |
-| **Face Auto Capture**                        | Basic component sample.                                                                                                  |
-| **Custom UI Face Auto Capture**              | Base Face Auto Capture component with custom UI.                                                                         |
-| **Smile Liveness**                           | Basic component sample.                                                                                                  |
-| **MagnifEye Liveness**                       | Basic component sample.                                                                                                  |
-| **Multi-Range Liveness**                     | Basic component sample.                                                                                                  |
-| **Palm Auto Capture**                        | Basic component sample.                                                                                                  |
-| **Fingers Auto Capture with transformation** | Combination of Fingers Auto Capture component and Finger to Fingerprint Transformer component.                           |
+| Sample                          | Description                                                                                                              |
+|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------|
+| **Document Auto Capture**       | Basic component sample.                                                                                                  |
+| **NFC Reading**                 | Combination of Document Auto Capture component with enabled MRZ recognition and UI NFC Travel Document Reader component. |
+| **Face Auto Capture**           | Basic component sample.                                                                                                  |
+| **Custom UI Face Auto Capture** | Base Face Auto Capture component with custom UI.                                                                         |
+| **Smile Liveness**              | Basic component sample.                                                                                                  |
+| **MagnifEye Liveness**          | Basic component sample.                                                                                                  |
+| **Multi-Range Liveness**        | Basic component sample.                                                                                                  |
+| **Palm Auto Capture**           | Basic component sample.                                                                                                  |
+| **Fingers Auto Capture**        | Combination of Fingers Auto Capture component and Finger to Fingerprint Transformer component.                           |
 
 In case when the samples do not work because of the expired IDV license, please contact `sales@innovatrics.com` in order to obtain a new license file.
 
