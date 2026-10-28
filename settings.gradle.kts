@@ -1,5 +1,3 @@
-import java.net.URI
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -13,9 +11,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = URI("https://maven.innovatrics.com/releases")
-        }
+        maven(url = "https://maven.innovatrics.com/releases")
     }
 }
 rootProject.name = "dot-android-sdk-samples"

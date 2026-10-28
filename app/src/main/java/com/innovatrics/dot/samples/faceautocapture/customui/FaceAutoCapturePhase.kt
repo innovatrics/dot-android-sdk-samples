@@ -38,6 +38,7 @@ internal class FaceAutoCapturePhase(
         return when (this) {
             Phase.PRE_CANDIDATE_SELECTION -> R.string.sample_custom_ui_face_auto_capture_phase_pre_candidate_selection
             Phase.CANDIDATE_SELECTION -> R.string.sample_custom_ui_face_auto_capture_phase_candidate_selection
+            Phase.FINISHED -> R.string.sample_custom_ui_face_auto_capture_phase_finished
         }
     }
 

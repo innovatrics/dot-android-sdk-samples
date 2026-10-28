@@ -12,6 +12,7 @@
     <string name="navigation_destination_smile_liveness">Smile Liveness</string>
     <string name="sample_custom_ui_face_auto_capture_description">Base Face Auto Capture component with custom UI.</string>
     <string name="sample_custom_ui_face_auto_capture_phase_candidate_selection">Candidate Selection</string>
+    <string name="sample_custom_ui_face_auto_capture_phase_finished">Finished</string>
     <string name="sample_custom_ui_face_auto_capture_phase_pre_candidate_selection">Pre-Candidate Selection</string>
     <string name="sample_custom_ui_face_auto_capture_title">Custom UI Face Auto Capture</string>
     <string name="sample_document_auto_capture_description">Basic component sample.</string>
